@@ -18,7 +18,7 @@ printf "\n${BLUE}Deleting dev-related files from build and old distributable if 
 # Remove old package
 rm zip-for-chrome-store.zip
 
-cd dist
+cd dist || exit
 
 printf "\n${BLUE}Creating zip file you can upload to Chrome Developer Dashboard...${GRAY}\n\n"
 
