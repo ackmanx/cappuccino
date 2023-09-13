@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "build": "tsc && vite build",
+    "build": "tsc --no-emit && vite build",
     "build:watch": "vite build --watch",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "prep": "bash chrome-store/prep-for-chrome-store.sh",
