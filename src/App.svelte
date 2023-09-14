@@ -1,3 +1,8 @@
+<!--
+┌─┐┌─┐┬─┐┬┌─┐┌┬┐
+└─┐│  ├┬┘│├─┘ │
+└─┘└─┘┴└─┴┴   ┴
+-->
 <script lang="ts">
   import AddNewPlaceholder from './lib/AddNewPlaceholder.svelte'
   import Card from './lib/Card.svelte'
@@ -22,6 +27,11 @@
   }
 </script>
 
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
 <style>
   main {
     display: grid;
@@ -33,6 +43,11 @@
   }
 </style>
 
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
 <main>
   <Drawer variant={isDrawerOpen ? 'open' : 'default'}>
     <ChangeCardContentsDrawer
