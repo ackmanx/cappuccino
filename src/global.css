@@ -1,0 +1,42 @@
+:root {
+  color-scheme: light dark;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  margin: 16px;
+  background-color: #666; /*mainBg*/
+  color: #666; /*text*/
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+a {
+  font-weight: 500;
+  color: #666; /*text*/
+  text-decoration: none;
+}
+
+a:hover {
+  color: #666; /*accent*/
+}
+
+ul {
+  padding: 0;
+  list-style: 'none';
+}

@@ -1,5 +1,6 @@
 import App from './App.svelte'
-import './app.css'
+import './global.css'
+import './variables.css'
 
 const app = new App({
   // @ts-expect-error
