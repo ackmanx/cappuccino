@@ -5,7 +5,7 @@
 -->
 <script lang="ts">
   import type { Card } from '../types'
-  import Button from "./Button/Button.svelte";
+  import Button from './Button/Button.svelte'
 
   // Props
   export let card: Card
@@ -32,12 +32,11 @@
     font-size: 16px;
   }
 
-    a:hover {
-      background-color: var(--color-main-background);
-      border-top-left-radius: 5px;
-      border-bottom-right-radius: 5px;
-    }
-
+  a:hover {
+    background-color: var(--color-main-background);
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+  }
 
   .header {
     display: flex;
@@ -51,23 +50,23 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section>
-  <div class='header'>
+  <div class="header">
     <h2>{card.title}</h2>
     <Button
-        handleClick={() => {
-            onChangeSelectedCard(cardIndex)
-          }}
+      handleClick={() => {
+        onChangeSelectedCard(cardIndex)
+      }}
     >
       Edit
     </Button>
   </div>
   <ul>
-    {card.links?.map(({ label, url }, index) => (
-      <li key={`${label}${index}`}>
+    {#each card.links as { label, url }}
+      <li>
         <a href={url}>
           {label}
         </a>
       </li>
-    ))}
+    {/each}
   </ul>
 </section>
