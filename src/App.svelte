@@ -8,11 +8,11 @@
   import Card from './lib/Card.svelte'
   import ChangeCardContentsDrawer from './lib/Drawer/ChangeCardContentsDrawer.svelte'
   import Drawer from './lib/Drawer/Drawer.svelte'
-  import type { Card as CardType } from './types'
+  import type { Card as tCard } from './types'
 
   let isDrawerOpen: boolean = false
-  let cards: CardType[] = []
-  let selectedCard: CardType
+  let cards: tCard[] = []
+  let selectedCard: tCard
 
   function handleAddNewCard() {
     return null
