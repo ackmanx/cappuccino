@@ -12,41 +12,43 @@
 └─┘└─┘└─┘
 -->
 <style>
-  /*export const field = style({*/
-  /*  height: '4rem',*/
-  /*  border: `0.2rem solid ${var(--color-text)}`,*/
-  /*  padding: '0 1.2rem',*/
-  /*  width: '100%',*/
-  /*  font-family: 'inherit',*/
-  /*  outlineOffset: '0.4rem',*/
-  /*})*/
+  .field {
+    height: 4rem;
+    border: 0.2rem solid var(--color-text);
+    padding: 0 1.2rem;
+    width: 100%;
+    font-family: inherit;
+    outline-offset: 0.4rem;
+  }
 
-  /*export const textArea = style({*/
-  /*  width: '100%',*/
-  /*  padding: '1.2rem',*/
-  /*  border: `0.2rem solid ${var(--color-accent)}`,*/
-  /*  font-family: 'inherit',*/
-  /*  outlineOffset: '0.4rem',*/
-  /*  resize: 'none',*/
-  /*})*/
+  .textArea {
+    width: 100%;
+    padding: 1.2rem;
+    border: 0.2rem solid var(--color-accent);
+    font-family: inherit;
+    outline-offset: 0.4rem;
+    resize: none;
+  }
 
-  /*export const labelCls = style({*/
-  /*  marginBottom: '.4rem',*/
-  /*  display: 'block',*/
-  /*})*/
-  /*export const container = style({*/
-  /*  margin: '1rem 0 2rem',*/
-  /*})*/
+  .labelCls {
+    margin-bottom: 0.4rem;
+    display: block;
+  }
+  )
 
-  /*export const errorContainer = style({*/
-  /*  color: var(--color-accent),*/
-  /*  display: 'flex',*/
-  /*  alignItems: 'center',*/
-  /*})*/
+  .container {
+    margin: 1rem 0 2rem;
+  }
 
-  /*export const errorImg = style({*/
-  /*  marginRight: '.5rem',*/
-  /*})*/
+  .errorContainer {
+    color: var(--color-accent);
+    display: flex;
+    align-items: center;
+  }
+
+  .errorImg {
+    margin-right: 0.5rem;
+  }
 </style>
 
 <!--
