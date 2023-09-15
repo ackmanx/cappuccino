@@ -34,7 +34,6 @@
     margin-bottom: 0.4rem;
     display: block;
   }
-  )
 
   .container {
     margin: 1rem 0 2rem;
