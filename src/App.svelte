@@ -49,7 +49,7 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <main>
-  <Drawer variant={isDrawerOpen ? 'open' : 'default'}>
+  <Drawer isOpen={isDrawerOpen}>
     <ChangeCardContentsDrawer
       cardIndex={selectedCard}
       card={cards[selectedCard]}
@@ -59,12 +59,7 @@
   </Drawer>
 
   {#each cards as card, index}
-    <Card
-      key={`${card.title}${index}`}
-      {card}
-      cardIndex={index}
-      onChangeSelectedCard={handleSelectCard}
-    />
+    <Card {card} cardIndex={index} onChangeSelectedCard={handleSelectCard} />
   {/each}
 
   <AddNewPlaceholder onClickNewPlaceholder={handleAddNewCard} />
