@@ -4,10 +4,10 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
-  import AddNewPlaceholder from './lib/AddNewPlaceholder.svelte'
+  import AddNewPlaceholder from './lib/AddNewPlaceholder/AddNewPlaceholder.svelte'
   import Card from './lib/Card.svelte'
-  import ChangeCardContentsDrawer from './lib/ChangeCardContentsDrawer.svelte'
-  import Drawer from './lib/Drawer.svelte'
+  import ChangeCardContentsDrawer from './lib/Drawer/ChangeCardContentsDrawer.svelte'
+  import Drawer from './lib/Drawer/Drawer.svelte'
   import type { Card as CardType } from './types'
 
   let isDrawerOpen: boolean = false
