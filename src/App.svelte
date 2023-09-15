@@ -15,7 +15,8 @@
   let selectedCardIndex: number
 
   function handleAddNewCard() {
-    return null
+    // I think I need to create a svelte store for this
+    cards = [...cards, { links: [] }]
   }
 
   function handleUpdateCard() {
