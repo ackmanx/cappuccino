@@ -12,7 +12,7 @@
 
   let isDrawerOpen: boolean = false
   let cards: tCard[] = []
-  let selectedCard: tCard
+  let selectedCardIndex: number
 
   function handleAddNewCard() {
     return null
@@ -51,8 +51,8 @@
 <main>
   <Drawer isOpen={isDrawerOpen}>
     <ChangeCardContentsDrawer
-      cardIndex={selectedCard}
-      card={cards[selectedCard]}
+      cardIndex={selectedCardIndex}
+      card={cards[selectedCardIndex]}
       onUpdateCard={handleUpdateCard}
       onChangeSelectedCard={handleSelectCard}
     />
