@@ -6,7 +6,7 @@
 <script lang="ts">
   import AddIcon from './add-icon.png'
 
-  export let onClickNewPlaceholder
+  export let onClickNewPlaceholder: () => void
 </script>
 
 <!--
