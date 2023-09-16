@@ -4,6 +4,11 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
+  // Props
+  export let label: string
+  export let placeholder: string
+  export let type: string
+  export let rows: number | undefined
 </script>
 
 <!--
@@ -12,7 +17,12 @@
 └─┘└─┘└─┘
 -->
 <style>
-  .field {
+  section {
+    margin: 1rem 0 2rem;
+  }
+
+  .field,
+  input {
     height: 4rem;
     border: 0.2rem solid var(--color-text);
     padding: 0 1.2rem;
@@ -21,7 +31,7 @@
     outline-offset: 0.4rem;
   }
 
-  .textArea {
+  textarea {
     width: 100%;
     padding: 1.2rem;
     border: 0.2rem solid var(--color-accent);
@@ -30,23 +40,9 @@
     resize: none;
   }
 
-  .labelCls {
+  label {
     margin-bottom: 0.4rem;
     display: block;
-  }
-
-  .container {
-    margin: 1rem 0 2rem;
-  }
-
-  .errorContainer {
-    color: var(--color-accent);
-    display: flex;
-    align-items: center;
-  }
-
-  .errorImg {
-    margin-right: 0.5rem;
   }
 </style>
 
@@ -55,4 +51,15 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<section />
+<section>
+  <label for={label}>
+    {label}
+  </label>
+  <div class="field">
+    {#if type === 'textarea'}
+      <textarea id={label} {placeholder} {rows} />
+    {:else}
+      <input id={label} type="text" {placeholder} />
+    {/if}
+  </div>
+</section>
