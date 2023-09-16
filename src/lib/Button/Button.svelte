@@ -5,7 +5,8 @@
 -->
 <script lang="ts">
   // Props
-  export let handleClick: (event: MouseEvent) => void
+  export let className: string = ''
+  export let handleClick: (event: MouseEvent) => void = () => {}
 </script>
 
 <!--
@@ -38,6 +39,6 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<button on:click={handleClick}>
+<button class={className} on:click={handleClick}>
   <slot />
 </button>

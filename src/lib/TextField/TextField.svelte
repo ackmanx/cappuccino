@@ -6,9 +6,8 @@
 <script lang="ts">
   // Props
   export let label: string
-  export let placeholder: string
   export let type: string
-  export let rows: number | undefined
+  export let rows: number | undefined = undefined
 </script>
 
 <!--
@@ -57,9 +56,9 @@
   </label>
   <div class="field">
     {#if type === 'textarea'}
-      <textarea id={label} {placeholder} {rows} />
+      <textarea id={label} {rows} />
     {:else}
-      <input id={label} type="text" {placeholder} />
+      <input id={label} type="text" />
     {/if}
   </div>
 </section>
