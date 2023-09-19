@@ -1,4 +1,6 @@
-export type CardData = Card[]
+export interface AppStore {
+  cards: Card[]
+}
 
 export interface Card {
   title?: string

@@ -4,15 +4,29 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
+  import { onMount } from 'svelte'
+
   import AddNewPlaceholder from './lib/AddNewPlaceholder/AddNewPlaceholder.svelte'
   import Card from './lib/Card.svelte'
   import ChangeCardContentsDrawer from './lib/Drawer/ChangeCardContentsDrawer.svelte'
   import Drawer from './lib/Drawer/Drawer.svelte'
-  import type { Card as tCard } from './types'
+  import { appStore } from './lib/store'
+  import type { AppStore, Card as tCard } from './types'
 
   let isDrawerOpen: boolean = false
   let cards: tCard[] = []
+  let appStoreValue: AppStore
   let selectedCardIndex: number
+
+  onMount(() => {
+    const appData = JSON.parse(localStorage.getItem('cardData') ?? '[]')
+    appStore.set({ cards: appData })
+  })
+
+  appStore.subscribe((newStore) => {
+    console.log(777, 'sub sub', newStore)
+    appStoreValue = newStore
+  })
 
   function handleAddNewCard() {
     // I think I need to create a svelte store for this
@@ -59,9 +73,11 @@
     />
   </Drawer>
 
-  {#each cards as card, index}
-    <Card {card} cardIndex={index} onChangeSelectedCard={handleSelectCard} />
-  {/each}
+  {#if appStoreValue}
+    {#each appStoreValue.cards as card, index}
+      <Card {card} cardIndex={index} onChangeSelectedCard={handleSelectCard} />
+    {/each}
+  {/if}
 
   <AddNewPlaceholder onClickNewPlaceholder={handleAddNewCard} />
 </main>
