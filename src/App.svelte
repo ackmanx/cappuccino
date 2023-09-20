@@ -15,7 +15,7 @@
 
   let isDrawerOpen: boolean = false
   let cards: tCard[] = []
-  let appStoreValue: AppStore
+  let appData: AppStore
   let selectedCardIndex: number
 
   onMount(() => {
@@ -24,7 +24,7 @@
   })
 
   appStore.subscribe((newStore) => {
-    appStoreValue = newStore
+    appData = newStore
   })
 
   function handleAddNewCard() {
@@ -73,8 +73,8 @@
   </Drawer>
 
   <div class="cards-list">
-    {#if appStoreValue}
-      {#each appStoreValue.cards as card, index}
+    {#if appData}
+      {#each appData.cards as card, index}
         <Card {card} cardIndex={index} onChangeSelectedCard={handleSelectCard} />
       {/each}
     {/if}
