@@ -9,8 +9,8 @@ html {
 body {
   font-size: 1.6rem;
   margin: 16px;
-  background-color: #666; /*mainBg*/
-  color: #666; /*text*/
+  background-color: var(--color-main-background);
+  color: var(--color-text);
 }
 
 body * {
@@ -28,12 +28,12 @@ h6 {
 
 a {
   font-weight: 500;
-  color: #666; /*text*/
+  color: var(--color-text);
   text-decoration: none;
 }
 
 a:hover {
-  color: #666; /*accent*/
+  color: var(--color-accent);
 }
 
 ul {
