@@ -47,7 +47,7 @@
 └─┘└─┘└─┘
 -->
 <style>
-  main {
+  .cards-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto 1fr auto;
@@ -72,11 +72,13 @@
     />
   </Drawer>
 
-  {#if appStoreValue}
-    {#each appStoreValue.cards as card, index}
-      <Card {card} cardIndex={index} onChangeSelectedCard={handleSelectCard} />
-    {/each}
-  {/if}
+  <div class="cards-list">
+    {#if appStoreValue}
+      {#each appStoreValue.cards as card, index}
+        <Card {card} cardIndex={index} onChangeSelectedCard={handleSelectCard} />
+      {/each}
+    {/if}
 
-  <AddNewPlaceholder onClickNewPlaceholder={handleAddNewCard} />
+    <AddNewPlaceholder onClickNewPlaceholder={handleAddNewCard} />
+  </div>
 </main>
