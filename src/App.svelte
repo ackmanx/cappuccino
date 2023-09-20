@@ -14,7 +14,6 @@
   import type { AppStore, Card as tCard } from './types'
 
   let isDrawerOpen: boolean = false
-  let cards: tCard[] = []
   let appData: AppStore
   let selectedCardIndex: number
 
@@ -28,8 +27,14 @@
   })
 
   function handleAddNewCard() {
-    // I think I need to create a svelte store for this
-    cards = [...cards, { links: [] }]
+    const emptyCard: tCard = { title: 'new card', links: [] }
+
+    appStore.set({
+      ...appData,
+      cards: [...appData.cards, emptyCard],
+    })
+
+    localStorage.setItem('appData', JSON.stringify(appData))
   }
 
   function handleUpdateCard() {
@@ -66,7 +71,7 @@
   <Drawer isOpen={isDrawerOpen}>
     <ChangeCardContentsDrawer
       cardIndex={selectedCardIndex}
-      card={cards[selectedCardIndex]}
+      card={appData.cards[selectedCardIndex]}
       onUpdateCard={handleUpdateCard}
       onChangeSelectedCard={handleSelectCard}
     />
