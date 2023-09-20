@@ -8,8 +8,8 @@
 
   import AddNewPlaceholder from './lib/AddNewPlaceholder/AddNewPlaceholder.svelte'
   import Card from './lib/Card.svelte'
-  import ChangeCardContentsDrawer from './lib/Drawer/ChangeCardContentsDrawer.svelte'
   import Drawer from './lib/Drawer/Drawer.svelte'
+  import UpdateCardDrawer from './lib/Drawer/UpdateCardDrawer.svelte'
   import { appStore } from './lib/store'
   import type { AppStore, Card as tCard } from './types'
 
@@ -72,7 +72,7 @@
 -->
 <main>
   <Drawer isOpen={isDrawerOpen}>
-    <ChangeCardContentsDrawer
+    <UpdateCardDrawer
       cardIndex={selectedCardIndex}
       card={appData.cards[selectedCardIndex]}
       onUpdateCard={handleUpdateCard}
