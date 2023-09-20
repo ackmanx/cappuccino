@@ -35,14 +35,17 @@
     })
 
     localStorage.setItem('appData', JSON.stringify(appData))
+
+    handleSelectCard(appData.cards.length - 1)
   }
 
   function handleUpdateCard() {
     return null
   }
 
-  function handleSelectCard() {
-    return null
+  function handleSelectCard(cardIndex: number) {
+    selectedCardIndex = cardIndex
+    isDrawerOpen = true
   }
 </script>
 
