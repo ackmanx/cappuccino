@@ -47,6 +47,8 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section class:open={isOpen} class:closed={!isOpen}>
-  <slot />
+  {#if isOpen}
+    <slot />
+  {/if}
 </section>
 <div class:overlay={isOpen} />

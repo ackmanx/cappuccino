@@ -4,16 +4,19 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
+  import type { Card } from '../../types'
   import Button from '../Button/Button.svelte'
   import TextField from '../TextField/TextField.svelte'
 
-  let tempLinksForCard = []
+  let tempLinksForCard: Card['links'] = []
 
   // Props
-  export let cardIndex
-  export let card
+  export let cardIndex: number
+  export let card: Card
   export let onUpdateCard
   export let onChangeSelectedCard
+
+  console.log(777, { card, cardIndex })
 </script>
 
 <!--
@@ -51,14 +54,14 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section>
-  <TextField type="text" label="title" />
+  <TextField label="title" value={card.title} />
   <p>Changing the order, create new, delete, or edit the links</p>
   <ul>
-    {#each tempLinksForCard as card}
+    {#each tempLinksForCard as link}
       <li>
         <Button className="deleteButton">&times;</Button>
-        <TextField type="text" label="label" />
-        <TextField type="text" label="url" />
+        <TextField label="label" value={link.label} />
+        <TextField label="url" value={link.url} />
       </li>
     {/each}
   </ul>
