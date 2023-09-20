@@ -19,12 +19,11 @@
   let selectedCardIndex: number
 
   onMount(() => {
-    const appData = JSON.parse(localStorage.getItem('cardData') ?? '[]')
-    appStore.set({ cards: appData })
+    const appData = JSON.parse(localStorage.getItem('appData') ?? '{}')
+    appStore.set(appData)
   })
 
   appStore.subscribe((newStore) => {
-    console.log(777, 'sub sub', newStore)
     appStoreValue = newStore
   })
 
