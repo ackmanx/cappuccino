@@ -11,7 +11,7 @@ fi
 printf "\n${BLUE}Creating production build...\n\n"
 
 # Create a production bundle
-yarn build
+pnpm build
 
 printf "\n${BLUE}Deleting dev-related files from build and old distributable if found...${GRAY}\n\n"
 
