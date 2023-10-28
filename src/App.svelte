@@ -17,8 +17,14 @@
   let appData: AppStore
   let selectedCardIndex: number
 
+
   onMount(() => {
     const appData = JSON.parse(localStorage.getItem('appData') ?? '{}')
+
+    if (!appData.cards) {
+      appData.cards = []
+    }
+
     appStore.set(appData)
   })
 
