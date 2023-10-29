@@ -28,6 +28,7 @@
   })
 
   // Any time the store is updated, also update local storage to stay in sync
+  // This is the only store subscription point so far in the app
   appStore.subscribe((newAppData) => {
     localStorage.setItem('appData', JSON.stringify(appData))
     appData = newAppData
