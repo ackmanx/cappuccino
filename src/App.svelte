@@ -10,39 +10,25 @@
   import Card from './lib/Card.svelte'
   import Drawer from './lib/Drawer/Drawer.svelte'
   import UpdateCardDrawer from './lib/Drawer/UpdateCardDrawer.svelte'
-  import { appStore } from './lib/store'
-  import type { AppStoreValue, Card as tCard } from './types'
+  import type { Card as tCard } from './types'
 
   let isDrawerOpen: boolean = false
-  let appData: AppStoreValue
+  let cards: tCard[]
   let selectedCardIndex: number
 
   onMount(() => {
-    const appData = JSON.parse(localStorage.getItem('appData') ?? '{}')
-
-    if (!appData.cards) {
-      appData.cards = []
-    }
-
-    appStore.set(appData)
-  })
-
-  // Any time the store is updated, also update local storage to stay in sync
-  // This is the only store subscription point so far in the app
-  appStore.subscribe((newAppData) => {
-    localStorage.setItem('appData', JSON.stringify(appData))
-    appData = newAppData
+    cards = JSON.parse(localStorage.getItem('cards') ?? '[]')
   })
 
   function handleAddNewCard() {
     const emptyCard: tCard = { title: 'new card', links: [] }
 
-    appStore.set({
-      ...appData,
-      cards: [...appData.cards, emptyCard],
-    })
+    cards.push(emptyCard)
+    cards = cards // Svelte doesn't know a push happened without an assignment
 
-    handleSelectCard(appData.cards.length - 1)
+    localStorage.setItem('cards', JSON.stringify(cards))
+
+    handleSelectCard(cards.length - 1)
   }
 
   function handleUpdateCard() {
@@ -80,15 +66,15 @@
   <Drawer isOpen={isDrawerOpen}>
     <UpdateCardDrawer
       cardIndex={selectedCardIndex}
-      card={appData.cards[selectedCardIndex]}
+      card={cards[selectedCardIndex]}
       onUpdateCard={handleUpdateCard}
       onChangeSelectedCard={handleSelectCard}
     />
   </Drawer>
 
   <div class="cards-list">
-    {#if appData}
-      {#each appData.cards as card, index}
+    {#if cards}
+      {#each cards as card, index}
         <Card {card} cardIndex={index} onChangeSelectedCard={handleSelectCard} />
       {/each}
     {/if}
