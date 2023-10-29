@@ -17,7 +17,6 @@
   let appData: AppStore
   let selectedCardIndex: number
 
-
   onMount(() => {
     const appData = JSON.parse(localStorage.getItem('appData') ?? '{}')
 

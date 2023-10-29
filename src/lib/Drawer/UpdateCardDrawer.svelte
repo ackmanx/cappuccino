@@ -15,8 +15,6 @@
   export let card: Card
   export let onUpdateCard
   export let onChangeSelectedCard
-
-  console.log(777, { card, cardIndex })
 </script>
 
 <!--
