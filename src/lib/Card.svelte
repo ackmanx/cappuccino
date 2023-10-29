@@ -25,6 +25,10 @@
     border-radius: 10px;
   }
 
+  h2 {
+    text-shadow: 5px 5px 5px black;
+  }
+
   a {
     width: 100%;
     padding: 8px;
