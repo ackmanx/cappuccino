@@ -63,15 +63,6 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <main>
-  <Drawer isOpen={isDrawerOpen}>
-    <UpdateCardDrawer
-      cardIndex={selectedCardIndex}
-      card={cards[selectedCardIndex]}
-      onUpdateCard={handleUpdateCard}
-      onChangeSelectedCard={handleSelectCard}
-    />
-  </Drawer>
-
   <div class="cards-list">
     {#if cards}
       {#each cards as card, index}
@@ -81,4 +72,13 @@
 
     <AddNewPlaceholder onClickNewPlaceholder={handleAddNewCard} />
   </div>
+
+  <Drawer isOpen={isDrawerOpen}>
+    <UpdateCardDrawer
+      cardIndex={selectedCardIndex}
+      card={cards[selectedCardIndex]}
+      onUpdateCard={handleUpdateCard}
+      onChangeSelectedCard={handleSelectCard}
+    />
+  </Drawer>
 </main>
