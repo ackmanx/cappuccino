@@ -1,4 +1,4 @@
-export interface AppStore {
+export interface AppStoreValue {
   cards: Card[]
 }
 

@@ -11,10 +11,10 @@
   import Drawer from './lib/Drawer/Drawer.svelte'
   import UpdateCardDrawer from './lib/Drawer/UpdateCardDrawer.svelte'
   import { appStore } from './lib/store'
-  import type { AppStore, Card as tCard } from './types'
+  import type { AppStoreValue, Card as tCard } from './types'
 
   let isDrawerOpen: boolean = false
-  let appData: AppStore
+  let appData: AppStoreValue
   let selectedCardIndex: number
 
   onMount(() => {
