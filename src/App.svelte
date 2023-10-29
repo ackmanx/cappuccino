@@ -27,8 +27,10 @@
     appStore.set(appData)
   })
 
-  appStore.subscribe((newStore) => {
-    appData = newStore
+  // Any time the store is updated, also update local storage to stay in sync
+  appStore.subscribe((newAppData) => {
+    localStorage.setItem('appData', JSON.stringify(appData))
+    appData = newAppData
   })
 
   function handleAddNewCard() {
@@ -38,8 +40,6 @@
       ...appData,
       cards: [...appData.cards, emptyCard],
     })
-
-    localStorage.setItem('appData', JSON.stringify(appData))
 
     handleSelectCard(appData.cards.length - 1)
   }
