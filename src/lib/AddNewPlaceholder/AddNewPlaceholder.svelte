@@ -19,6 +19,7 @@
     background-color: var(--color-card-background);
     padding: 16px;
     border-radius: 10px;
+    border: none;
     display: flex;
     justify-content: center;
     cursor: pointer;
