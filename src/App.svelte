@@ -8,7 +8,7 @@
 
   import AddNewPlaceholder from './lib/AddNewPlaceholder/AddNewPlaceholder.svelte'
   import AppHeader from './lib/AppHeader/AppHeader.svelte'
-  import Card from './lib/Card.svelte'
+  import Card from './lib/Card/Card.svelte'
   import Drawer from './lib/Drawer/Drawer.svelte'
   import UpdateCardDrawer from './lib/Drawer/UpdateCardDrawer.svelte'
   import type { Card as tCard } from './types'

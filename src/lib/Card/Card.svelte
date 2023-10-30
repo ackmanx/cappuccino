@@ -4,8 +4,8 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
-  import type { Card } from '../types'
-  import Button from './Button/Button.svelte'
+  import type { Card } from '../../types'
+  import Button from '../Button/Button.svelte'
 
   // Props
   export let card: Card
