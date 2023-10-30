@@ -61,7 +61,7 @@
         onChangeSelectedCard(cardIndex)
       }}
     >
-      Edit
+      edit
     </Button>
   </div>
   <ul>
