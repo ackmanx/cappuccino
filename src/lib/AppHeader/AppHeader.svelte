@@ -4,9 +4,6 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script>
-  import AddNewPlaceholder from '../AddNewPlaceholder/AddNewPlaceholder.svelte'
-
-  export let onAddNewCard
 </script>
 
 <!--
@@ -17,8 +14,9 @@
 <style>
   section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    padding: 16px;
   }
 
   input {
@@ -38,8 +36,6 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section>
-  <AddNewPlaceholder onClickNewPlaceholder={onAddNewCard} />
   <!-- svelte-ignore a11y-autofocus -->
   <input autofocus />
-  <AddNewPlaceholder onClickNewPlaceholder={onAddNewCard} />
 </section>

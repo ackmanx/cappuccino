@@ -64,7 +64,7 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <main>
-  <AppHeader onAddNewCard={handleAddNewCard} />
+  <AppHeader />
 
   <div class="cards-list">
     {#if cards}
