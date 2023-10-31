@@ -26,7 +26,7 @@
   }
 
   h2 {
-    text-shadow: 5px 5px 5px black;
+    text-shadow: 2px 2px 2px #b0b0b0;
   }
 
   a {
