@@ -46,6 +46,10 @@
     display: flex;
     justify-content: space-between;
   }
+
+  /*span {*/
+  /*  color: var(--color-button-background);*/
+  /*}*/
 </style>
 
 <!--
@@ -61,7 +65,7 @@
         onChangeSelectedCard(cardIndex)
       }}
     >
-      edit
+      <span class="material-symbols-outlined"> edit </span>
     </Button>
   </div>
   <ul>

@@ -20,7 +20,8 @@
     background-color: var(--color-button-background);
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 0.6em 1.2em;
+    padding: 0.6em 1.2em; /*edit button*/
+    padding: 0.2em 0.5em 0 0.5em; /*icon button*/
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
