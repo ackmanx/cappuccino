@@ -4,6 +4,8 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
+  import { onMount } from 'svelte'
+
   import type { Card } from '../../types'
   import Button from '../Button/Button.svelte'
   import TextField from '../TextField/TextField.svelte'
@@ -11,10 +13,15 @@
   let tempLinksForCard: Card['links'] = []
 
   // Props
-  export let cardIndex: number
-  export let card: Card
-  export let onUpdateCard
-  export let onChangeSelectedCard
+  export let card: Card | null
+  export let onSave
+  export let onCancel
+
+  onMount(() => {
+    if (!card) {
+      card = { title: 'new card', links: [] }
+    }
+  })
 </script>
 
 <!--
@@ -52,8 +59,10 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section>
-  <TextField label="title" value={card.title} />
+  <TextField label="title" value={card?.title} />
+
   <p>Changing the order, create new, delete, or edit the links</p>
+
   <ul>
     {#each tempLinksForCard as link}
       <li>
@@ -63,11 +72,12 @@
       </li>
     {/each}
   </ul>
+
   <div>
     <Button>new</Button>
   </div>
   <div class="buttonContainer">
-    <Button>save</Button>
-    <Button>cancel</Button>
+    <Button onClick={onSave}>save</Button>
+    <Button onClick={onCancel}>cancel</Button>
   </div>
 </section>

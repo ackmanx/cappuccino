@@ -10,34 +10,33 @@
   import AppHeader from './lib/AppHeader/AppHeader.svelte'
   import Card from './lib/Card/Card.svelte'
   import Drawer from './lib/Drawer/Drawer.svelte'
-  import UpdateCardDrawer from './lib/Drawer/UpdateCardDrawer.svelte'
+  import EditCardDrawer from './lib/Drawer/UpdateCardDrawer.svelte'
   import type { Card as tCard } from './types'
 
   let isDrawerOpen: boolean = false
   let cards: tCard[]
-  let selectedCardIndex: number
+  let selectedCard: tCard | null
 
   onMount(() => {
     cards = JSON.parse(localStorage.getItem('cards') ?? '[]')
   })
 
   function handleAddNewCard() {
-    const emptyCard: tCard = { title: 'new card', links: [] }
-
-    cards.push(emptyCard)
-    cards = cards // Svelte doesn't know a push happened without an assignment
-
-    localStorage.setItem('cards', JSON.stringify(cards))
-
-    handleSelectCard(cards.length - 1)
+    handleEditCard(null)
   }
 
-  function handleUpdateCard() {
+  function handleSaveCard() {
+    // localStorage.setItem('cards', JSON.stringify(cards))
     return null
   }
 
-  function handleSelectCard(cardIndex: number) {
-    selectedCardIndex = cardIndex
+  function handleCancelEditCard() {
+    isDrawerOpen = false
+    /* prettier-ignore */ console.log('^_^', 'close that b')
+  }
+
+  function handleEditCard(cardIndex: number | null) {
+    selectedCard = cardIndex ? cards[cardIndex] : null
     isDrawerOpen = true
   }
 </script>
@@ -69,7 +68,7 @@
   <div class="cards-list">
     {#if cards}
       {#each cards as card, index}
-        <Card {card} cardIndex={index} onChangeSelectedCard={handleSelectCard} />
+        <Card {card} cardIndex={index} onChangeSelectedCard={handleEditCard} />
       {/each}
     {/if}
 
@@ -77,11 +76,6 @@
   </div>
 
   <Drawer isOpen={isDrawerOpen}>
-    <UpdateCardDrawer
-      cardIndex={selectedCardIndex}
-      card={cards[selectedCardIndex]}
-      onUpdateCard={handleUpdateCard}
-      onChangeSelectedCard={handleSelectCard}
-    />
+    <EditCardDrawer card={selectedCard} onSave={handleSaveCard} onCancel={handleCancelEditCard} />
   </Drawer>
 </main>
