@@ -25,14 +25,14 @@
     handleEditCard(null)
   }
 
-  function handleSaveCard() {
+  function handleSaveCard(card: tCard) {
+    /* prettier-ignore */ console.log('^_^', {card})
     // localStorage.setItem('cards', JSON.stringify(cards))
     return null
   }
 
   function handleCancelEditCard() {
     isDrawerOpen = false
-    /* prettier-ignore */ console.log('^_^', 'close that b')
   }
 
   function handleEditCard(cardIndex: number | null) {

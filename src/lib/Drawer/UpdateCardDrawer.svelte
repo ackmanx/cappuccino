@@ -61,8 +61,6 @@
 <section>
   <TextField label="title" value={card?.title} />
 
-  <p>Changing the order, create new, delete, or edit the links</p>
-
   <ul>
     {#each tempLinksForCard as link}
       <li>
@@ -77,7 +75,7 @@
     <Button>new</Button>
   </div>
   <div class="buttonContainer">
-    <Button onClick={onSave}>save</Button>
+    <Button onClick={() => onSave(card)}>save</Button>
     <Button onClick={onCancel}>cancel</Button>
   </div>
 </section>

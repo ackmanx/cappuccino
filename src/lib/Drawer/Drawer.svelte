@@ -14,16 +14,17 @@
 -->
 <style>
   section {
+    width: 50%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     flex-basis: 420px;
     position: fixed;
     top: 0;
     transition: right 0.3s ease-in;
-    height: 100vh;
-    background-color: var(--color-card-background);
-    z-index: 1;
     padding: 1.6rem;
+    z-index: 1;
+    background-color: var(--color-card-background);
   }
 
   .open {
@@ -31,7 +32,7 @@
   }
 
   .closed {
-    right: -436px;
+    right: -50%;
   }
 
   .overlay {

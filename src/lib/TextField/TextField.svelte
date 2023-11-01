@@ -24,8 +24,6 @@
     border: 0.2rem solid var(--color-text);
     padding: 0 1.2rem;
     width: 100%;
-    font-family: inherit;
-    outline-offset: 0.4rem;
   }
 
   label {
