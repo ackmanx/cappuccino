@@ -7,6 +7,7 @@
   // Props
   export let label: string
   export let value: string | undefined
+  export let onChange
 </script>
 
 <!--
@@ -40,5 +41,5 @@
 -->
 <section>
   <label for={label}>{label}</label>
-  <input id={label} type="text" {value} />
+  <input id={label} type="text" {value} on:change={onChange} />
 </section>

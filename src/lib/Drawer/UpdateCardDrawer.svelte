@@ -22,6 +22,10 @@
       card = { title: 'new card', links: [] }
     }
   })
+
+  function handleTitleInput(event: CustomEvent<KeyboardEvent>) {
+    card.title = event.target.value
+  }
 </script>
 
 <!--
@@ -51,6 +55,11 @@
     height: 4rem;
     padding: 0 0.5rem;
   }
+
+  .cancel-button {
+    text-align: right;
+    margin-bottom: -10px;
+  }
 </style>
 
 <!--
@@ -59,7 +68,11 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section>
-  <TextField label="title" value={card?.title} />
+  <div class="cancel-button">
+    <Button onClick={onCancel}><span class="material-symbols-outlined"> close </span></Button>
+  </div>
+
+  <TextField label="title" value={card?.title} onChange={handleTitleInput} />
 
   <ul>
     {#each tempLinksForCard as link}
@@ -76,6 +89,5 @@
   </div>
   <div class="buttonContainer">
     <Button onClick={() => onSave(card)}>save</Button>
-    <Button onClick={onCancel}>cancel</Button>
   </div>
 </section>
