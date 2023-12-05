@@ -14,8 +14,8 @@
   import type { Card as tCard } from './types'
 
   let isDrawerOpen: boolean = false
-  let cards: tCard[]
-  let selectedCard: tCard | null
+  let cards: tCard[] = []
+  let selectedCardIndex = 0
 
   onMount(() => {
     cards = JSON.parse(localStorage.getItem('cards') ?? '[]')
@@ -36,7 +36,7 @@
   }
 
   function handleEditCard(cardIndex: number | null) {
-    selectedCard = cardIndex ? cards[cardIndex] : null
+    // selectedCard = cardIndex ? cards[cardIndex] : null
     isDrawerOpen = true
   }
 </script>
@@ -47,13 +47,27 @@
 └─┘└─┘└─┘
 -->
 <style>
-  .cards-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto 1fr auto;
-    gap: 1rem;
-    align-items: flex-start;
-    grid-auto-rows: min-content;
+  nav {
+    display: flex;
+    justify-content: center;
+  }
+
+  ul {
+    display: flex;
+    gap: 24px;
+  }
+
+  button {
+    background-color: transparent;
+    color: var(--color-text);
+    border: none;
+    cursor: pointer;
+    font-size: 1.6rem;
+    font-family: inherit;
+  }
+
+  button:hover {
+    text-shadow: 2px 2px 8px var(--color-accent);
   }
 </style>
 
@@ -65,17 +79,15 @@
 <main>
   <AppHeader />
 
-  <div class="cards-list">
-    {#if cards}
-      {#each cards as card, index}
-        <Card {card} cardIndex={index} onChangeSelectedCard={handleEditCard} />
-      {/each}
-    {/if}
-
-    <AddNewPlaceholder onClickNewPlaceholder={handleAddNewCard} />
-  </div>
-
-  <Drawer isOpen={isDrawerOpen}>
-    <EditCardDrawer card={selectedCard} onSave={handleSaveCard} onCancel={handleCancelEditCard} />
-  </Drawer>
+  <nav>
+    <ul>
+      {#if cards}
+        {#each cards as card, index}
+          <li>
+            <button>{card.title}</button>
+          </li>
+        {/each}
+      {/if}
+    </ul>
+  </nav>
 </main>
