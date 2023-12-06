@@ -16,22 +16,18 @@
 -->
 <style>
   button {
-    color: var(--color-main-background);
-    background-color: var(--color-button-background);
+    color: var(--color-button-background);
+    background-color: var(--color-main-background);
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 0.6em 1.2em; /*edit button*/
-    padding: 0.2em 0.5em 0 0.5em; /*icon button*/
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
+    padding: 0.2em 0.5em 0 0.5em;
     cursor: pointer;
-    transition: border-color 0.25s;
+    transition: all 0.25s;
   }
 
-  button:focus,
-  button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+  button:hover {
+    color: var(--color-main-background);
+    background-color: var(--color-button-background);
   }
 </style>
 

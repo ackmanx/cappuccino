@@ -5,6 +5,7 @@
 -->
 <script lang="ts">
   import type { Tab } from '../../types'
+  import Button from '../inputs/Button/Button.svelte'
 
   export let tabs: Tab[] = []
   export let selectedTabIndex: number = 0
@@ -25,6 +26,7 @@
   ul {
     display: flex;
     gap: 24px;
+    margin-right: 16px;
   }
 
   button {
@@ -61,4 +63,12 @@
       </li>
     {/each}
   </ul>
+
+  <Button
+    handleClick={() => {
+      onChangeSelectedCard(cardIndex)
+    }}
+  >
+    <span class="material-symbols-outlined"> edit </span>
+  </Button>
 </nav>
