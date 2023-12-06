@@ -9,6 +9,7 @@
   import AddNewPlaceholder from './components/AddNewPlaceholder/AddNewPlaceholder.svelte'
   import AppHeader from './components/AppHeader/AppHeader.svelte'
   import Card from './components/CardsList/Card.svelte'
+  import CardsList from './components/CardsList/CardsList.svelte'
   import Drawer from './components/Drawer/Drawer.svelte'
   import EditCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'
@@ -49,14 +50,6 @@
 └─┘└─┘└─┘
 -->
 <style>
-  .cards-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto 1fr auto;
-    gap: 1rem;
-    align-items: flex-start;
-    grid-auto-rows: min-content;
-  }
 </style>
 
 <!--
@@ -67,15 +60,8 @@
 {#if tabs.length}
   <main>
     <AppHeader />
-
     <TabsList {tabs} />
-
     <LinksList {tabs} {selectedTabIndex} />
-
-    <div class="cards-list">
-      {#each tabs[selectedTabIndex].cards as card, index}
-        <Card {card} cardIndex={index} />
-      {/each}
-    </div>
+    <CardsList {tabs} {selectedTabIndex} />
   </main>
 {/if}
