@@ -60,7 +60,7 @@
 {#if tabs.length}
   <main>
     <AppHeader />
-    <NavBar {tabs} onChangeTab={handleChangeTab} />
+    <NavBar {tabs} {selectedTabIndex} onChangeTab={handleChangeTab} />
     <LinksList {tabs} {selectedTabIndex} />
     <CardsList {tabs} {selectedTabIndex} />
   </main>

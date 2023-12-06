@@ -7,6 +7,7 @@
   import type { Tab } from '../../types'
 
   export let tabs: Tab[] = []
+  export let selectedTabIndex: number = 0
   export let onChangeTab: (tabIndex: number) => void
 </script>
 
@@ -39,6 +40,10 @@
   button:hover {
     border-bottom: 2px solid #acacac;
   }
+
+  button.active {
+    border-bottom: 2px solid var(--color-text);
+  }
 </style>
 
 <!--
@@ -50,7 +55,9 @@
   <ul>
     {#each tabs as tab, index}
       <li>
-        <button on:click={() => onChangeTab(index)}>{tab.title}</button>
+        <button class:active={selectedTabIndex === index} on:click={() => onChangeTab(index)}>
+          {tab.title}
+        </button>
       </li>
     {/each}
   </ul>
