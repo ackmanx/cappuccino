@@ -1,23 +1,38 @@
-import type { Card } from '../types'
+import type { Tab } from '../types'
 
 /*
  * These are examples of the data stored in local storage
  * It can be used for development to quickly get fresh valid data
  */
 
-const exampleLocalStorageCardsData: Card[] = [
+const exampleLocalStorageTabsData: Tab[] = [
   {
     title: 'Pull Requests',
     links: [
       { label: 'All of Mine', url: 'http://git.target.com' },
       { label: 'FE - Ready for Review', url: 'http://git.target.com' },
     ],
+    cards: [
+      {
+        title: 'Frontend',
+        links: [
+          { label: 'All of Mine', url: 'http://git.target.com' },
+          { label: 'FE - Ready for Review', url: 'http://git.target.com' },
+        ],
+      },
+    ],
   },
   {
     title: 'Playgrounds',
-    links: [
-      { label: 'TypeScript', url: 'http://git.target.com' },
-      { label: 'GraphQL', url: 'http://git.target.com' },
+    links: [],
+    cards: [
+      {
+        title: 'Frontend',
+        links: [
+          { label: 'All of Mine', url: 'http://git.target.com' },
+          { label: 'FE - Ready for Review', url: 'http://git.target.com' },
+        ],
+      },
     ],
   },
   {
@@ -26,6 +41,7 @@ const exampleLocalStorageCardsData: Card[] = [
       { label: 'Slingshot Jira Board', url: 'http://jira.target.com' },
       { label: 'Slingshot Backlog', url: 'http://jira.target.com' },
     ],
+    cards: [],
   },
 ]
 

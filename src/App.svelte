@@ -67,7 +67,7 @@
   }
 
   button:hover {
-    text-shadow: 2px 2px 8px var(--color-accent);
+    border-bottom: 2px solid #acacac;
   }
 </style>
 
