@@ -20,7 +20,7 @@
   }
 
   input {
-    height: 60px;
+    height: 40px;
     width: 50%;
     padding-left: 16px;
     font-size: 24px;
