@@ -16,28 +16,15 @@
 └─┘└─┘└─┘
 -->
 <style>
-  nav {
-    display: flex;
-    justify-content: center;
-  }
-
   ul {
     display: flex;
     gap: 24px;
   }
 
-  button {
-    background-color: transparent;
-    color: var(--color-text);
-    border: none;
-    cursor: pointer;
-    font-size: 1.6rem;
-    font-family: inherit;
-    border-bottom: 2px solid transparent;
-  }
-
-  button:hover {
-    border-bottom: 2px solid #acacac;
+  .links-list {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 16px;
   }
 </style>
 
@@ -46,12 +33,12 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<nav>
-  <ul>
-    {#each tabs as tab, index}
-      <li>
-        <button>{tab.title}</button>
-      </li>
-    {/each}
-  </ul>
-</nav>
+<ul class="links-list">
+  {#each tabs[selectedTabIndex].links as link}
+    <li>
+      <a href={link.url}>
+        {link.label}
+      </a>
+    </li>
+  {/each}
+</ul>

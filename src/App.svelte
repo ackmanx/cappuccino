@@ -11,6 +11,7 @@
   import Card from './components/Card/Card.svelte'
   import Drawer from './components/Drawer/Drawer.svelte'
   import EditCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
+  import LinksList from './components/LinksList/LinksList.svelte'
   import TabsList from './components/TabsList/TabsList.svelte'
   import type { Tab } from './types'
 
@@ -48,36 +49,6 @@
 └─┘└─┘└─┘
 -->
 <style>
-  nav {
-    display: flex;
-    justify-content: center;
-  }
-
-  ul {
-    display: flex;
-    gap: 24px;
-  }
-
-  button {
-    background-color: transparent;
-    color: var(--color-text);
-    border: none;
-    cursor: pointer;
-    font-size: 1.6rem;
-    font-family: inherit;
-    border-bottom: 2px solid transparent;
-  }
-
-  button:hover {
-    border-bottom: 2px solid #acacac;
-  }
-
-  .links-list {
-    border: 1px solid;
-    border-radius: 5px;
-    padding: 16px;
-  }
-
   .cards-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -99,15 +70,7 @@
 
     <TabsList {tabs} />
 
-    <ul class="links-list">
-      {#each tabs[selectedTabIndex].links as link}
-        <li>
-          <a href={link.url}>
-            {link.label}
-          </a>
-        </li>
-      {/each}
-    </ul>
+    <LinksList {tabs} {selectedTabIndex} />
 
     <div class="cards-list">
       {#each tabs[selectedTabIndex].cards as card, index}
