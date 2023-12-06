@@ -71,6 +71,12 @@
     border-bottom: 2px solid #acacac;
   }
 
+  .links-list {
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 16px;
+  }
+
   .cards-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -99,6 +105,16 @@
         {/each}
       </ul>
     </nav>
+
+    <ul class="links-list">
+      {#each tabs[selectedTabIndex].links as link}
+        <li>
+          <a href={link.url}>
+            {link.label}
+          </a>
+        </li>
+      {/each}
+    </ul>
 
     <div class="cards-list">
       {#each tabs[selectedTabIndex].cards as card, index}
