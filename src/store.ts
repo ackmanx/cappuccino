@@ -8,6 +8,6 @@
  */
 import { writable } from 'svelte/store'
 
-import type { AppStoreValue } from '../types'
+import type { AppStoreValue } from './types'
 
 export const appStore = writable<AppStoreValue>()

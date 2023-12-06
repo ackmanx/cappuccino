@@ -1,10 +1,9 @@
 @media (prefers-color-scheme: light) {
   :root {
-    --color-main-background: #fcfcfc;
+    --color-main-background: #ffffff;
     --color-text: #213547;
-    --color-card-background: #f1f1f1;
-    --color-button-background: #916aff;
-    --color-accent: #916aff;
+    --color-button-background: #213547;
+    --color-accent: #cc0000;
   }
 }
 
@@ -12,8 +11,7 @@
   :root {
     --color-main-background: #242424;
     --color-text: rgba(255, 255, 255, 0.87);
-    --color-card-background: #383838;
-    --color-button-background: #916aff;
-    --color-accent: #916aff;
+    --color-button-background: rgba(255, 255, 255, 0.87);
+    --color-accent: #cc0000;
   }
 }

@@ -3,6 +3,8 @@
 }
 
 html {
+  /* Make it easier to use rem units */
+  /* https://www.aleksandrhovhannisyan.com/blog/62-5-percent-font-size-trick/ */
   font-size: 62.5%;
 }
 
@@ -41,6 +43,7 @@ ul {
   list-style: none;
 }
 
+/* Added per Google Fonts symbols instructions */
 .material-symbols-outlined {
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }

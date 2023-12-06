@@ -6,27 +6,30 @@
 <script lang="ts">
   import { onMount } from 'svelte'
 
-  import AddNewPlaceholder from './lib/AddNewPlaceholder/AddNewPlaceholder.svelte'
-  import AppHeader from './lib/AppHeader/AppHeader.svelte'
-  import Card from './lib/Card/Card.svelte'
-  import Drawer from './lib/Drawer/Drawer.svelte'
-  import EditCardDrawer from './lib/Drawer/UpdateCardDrawer.svelte'
-  import type { Card as tCard } from './types'
+  import AppHeader from './components/AppHeader/AppHeader.svelte'
+  import CardsList from './components/CardsList/CardsList.svelte'
+  import LinksList from './components/LinksList/LinksList.svelte'
+  import NavBar from './components/NavBar/NavBar.svelte'
+  import type { Tab } from './types'
 
   let isDrawerOpen: boolean = false
-  let cards: tCard[]
-  let selectedCard: tCard | null
+  let tabs: Tab[] = []
+  let selectedTabIndex = 0
 
   onMount(() => {
-    cards = JSON.parse(localStorage.getItem('cards') ?? '[]')
+    tabs = JSON.parse(localStorage.getItem('appContent') ?? '[]')
+    /* prettier-ignore */ console.log('^_^', 'mounted', tabs)
   })
+
+  function handleChangeTab(tabIndex: number) {
+    selectedTabIndex = tabIndex
+  }
 
   function handleAddNewCard() {
     handleEditCard(null)
   }
 
-  function handleSaveCard(card: tCard) {
-    /* prettier-ignore */ console.log('^_^', {card})
+  function handleSaveCard(tab: Tab) {
     // localStorage.setItem('cards', JSON.stringify(cards))
     return null
   }
@@ -36,7 +39,7 @@
   }
 
   function handleEditCard(cardIndex: number | null) {
-    selectedCard = cardIndex ? cards[cardIndex] : null
+    // selectedCard = cardIndex ? cards[cardIndex] : null
     isDrawerOpen = true
   }
 </script>
@@ -47,14 +50,6 @@
 └─┘└─┘└─┘
 -->
 <style>
-  .cards-list {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto 1fr auto;
-    gap: 1rem;
-    align-items: flex-start;
-    grid-auto-rows: min-content;
-  }
 </style>
 
 <!--
@@ -62,20 +57,11 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<main>
-  <AppHeader />
-
-  <div class="cards-list">
-    {#if cards}
-      {#each cards as card, index}
-        <Card {card} cardIndex={index} onChangeSelectedCard={handleEditCard} />
-      {/each}
-    {/if}
-
-    <AddNewPlaceholder onClickNewPlaceholder={handleAddNewCard} />
-  </div>
-
-  <Drawer isOpen={isDrawerOpen}>
-    <EditCardDrawer card={selectedCard} onSave={handleSaveCard} onCancel={handleCancelEditCard} />
-  </Drawer>
-</main>
+{#if tabs.length}
+  <main>
+    <AppHeader />
+    <NavBar {tabs} onChangeTab={handleChangeTab} />
+    <LinksList {tabs} {selectedTabIndex} />
+    <CardsList {tabs} {selectedTabIndex} />
+  </main>
+{/if}
