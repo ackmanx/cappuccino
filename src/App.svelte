@@ -11,22 +11,22 @@
   import Card from './components/Card/Card.svelte'
   import Drawer from './components/Drawer/Drawer.svelte'
   import EditCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
-  import type { Card as tCard } from './types'
+  import type { Tab } from './types'
 
   let isDrawerOpen: boolean = false
-  let cards: tCard[] = []
-  let selectedCardIndex = 0
+  let tabs: Tab[] = []
+  let selectedTabIndex = 0
 
   onMount(() => {
-    cards = JSON.parse(localStorage.getItem('cards') ?? '[]')
+    tabs = JSON.parse(localStorage.getItem('appContent') ?? '[]')
+    /* prettier-ignore */ console.log('^_^', 'mounted', tabs)
   })
 
   function handleAddNewCard() {
     handleEditCard(null)
   }
 
-  function handleSaveCard(card: tCard) {
-    /* prettier-ignore */ console.log('^_^', {card})
+  function handleSaveCard(tab: Tab) {
     // localStorage.setItem('cards', JSON.stringify(cards))
     return null
   }
@@ -76,18 +76,22 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<main>
-  <AppHeader />
+{#if tabs.length}
+  <main>
+    <AppHeader />
 
-  <nav>
-    <ul>
-      {#if cards}
-        {#each cards as card, index}
+    <nav>
+      <ul>
+        {#each tabs as tab, index}
           <li>
-            <button>{card.title}</button>
+            <button>{tab.title}</button>
           </li>
         {/each}
-      {/if}
-    </ul>
-  </nav>
-</main>
+      </ul>
+    </nav>
+
+    {#each tabs[selectedTabIndex].cards as card, index}
+      <Card {card} cardIndex={index} />
+    {/each}
+  </main>
+{/if}

@@ -10,7 +10,7 @@
   // Props
   export let card: Card
   export let cardIndex: number
-  export let onChangeSelectedCard: (cardIndex: number) => void
+  // export let onChangeSelectedCard: (cardIndex: number) => void
 </script>
 
 <!--
@@ -23,10 +23,6 @@
     background-color: var(--color-card-background);
     padding: 16px;
     border-radius: 10px;
-  }
-
-  h2 {
-    text-shadow: 2px 2px 2px #b0b0b0;
   }
 
   a {
@@ -46,10 +42,6 @@
     display: flex;
     justify-content: space-between;
   }
-
-  /*span {*/
-  /*  color: var(--color-button-background);*/
-  /*}*/
 </style>
 
 <!--
