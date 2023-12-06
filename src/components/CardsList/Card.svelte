@@ -5,7 +5,7 @@
 -->
 <script lang="ts">
   import type { Card } from '../../types'
-  import Button from '../Button/Button.svelte'
+  import Button from '../inputs/Button/Button.svelte'
 
   // Props
   export let card: Card

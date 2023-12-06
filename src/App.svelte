@@ -8,7 +8,7 @@
 
   import AddNewPlaceholder from './components/AddNewPlaceholder/AddNewPlaceholder.svelte'
   import AppHeader from './components/AppHeader/AppHeader.svelte'
-  import Card from './components/Card/Card.svelte'
+  import Card from './components/CardsList/Card.svelte'
   import Drawer from './components/Drawer/Drawer.svelte'
   import EditCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'

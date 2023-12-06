@@ -7,8 +7,8 @@
   import { onMount } from 'svelte'
 
   import type { Card } from '../../types'
-  import Button from '../Button/Button.svelte'
-  import TextField from '../TextField/TextField.svelte'
+  import Button from '../inputs/Button/Button.svelte'
+  import TextField from '../inputs/TextField/TextField.svelte'
 
   let tempLinksForCard: Card['links'] = []
 
