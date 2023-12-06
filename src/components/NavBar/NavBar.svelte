@@ -10,6 +10,7 @@
   export let tabs: Tab[] = []
   export let selectedTabIndex: number = 0
   export let onChangeTab: (tabIndex: number) => void
+  export let onEditTabs: () => void
 </script>
 
 <!--
@@ -64,11 +65,7 @@
     {/each}
   </ul>
 
-  <Button
-    handleClick={() => {
-      onChangeSelectedCard(cardIndex)
-    }}
-  >
+  <Button onClick={onEditTabs}>
     <span class="material-symbols-outlined"> edit </span>
   </Button>
 </nav>

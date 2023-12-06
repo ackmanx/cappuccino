@@ -6,7 +6,7 @@
 <script lang="ts">
   // Props
   export let className: string = ''
-  export let onClick: (event: MouseEvent) => void = () => {}
+  export let onClick: (_) => void = () => {}
 </script>
 
 <!--
