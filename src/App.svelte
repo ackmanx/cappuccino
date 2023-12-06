@@ -6,11 +6,11 @@
 <script lang="ts">
   import { onMount } from 'svelte'
 
-  import AddNewPlaceholder from './lib/AddNewPlaceholder/AddNewPlaceholder.svelte'
-  import AppHeader from './lib/AppHeader/AppHeader.svelte'
-  import Card from './lib/Card/Card.svelte'
-  import Drawer from './lib/Drawer/Drawer.svelte'
-  import EditCardDrawer from './lib/Drawer/UpdateCardDrawer.svelte'
+  import AddNewPlaceholder from './components/AddNewPlaceholder/AddNewPlaceholder.svelte'
+  import AppHeader from './components/AppHeader/AppHeader.svelte'
+  import Card from './components/Card/Card.svelte'
+  import Drawer from './components/Drawer/Drawer.svelte'
+  import EditCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
   import type { Card as tCard } from './types'
 
   let isDrawerOpen: boolean = false
