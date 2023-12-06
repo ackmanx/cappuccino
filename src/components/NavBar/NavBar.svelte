@@ -7,6 +7,7 @@
   import type { Tab } from '../../types'
 
   export let tabs: Tab[] = []
+  export let onChangeTab: (tabIndex: number) => void
 </script>
 
 <!--
@@ -49,7 +50,7 @@
   <ul>
     {#each tabs as tab, index}
       <li>
-        <button>{tab.title}</button>
+        <button on:click={() => onChangeTab(index)}>{tab.title}</button>
       </li>
     {/each}
   </ul>

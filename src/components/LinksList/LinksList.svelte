@@ -19,9 +19,6 @@
   ul {
     display: flex;
     gap: 24px;
-  }
-
-  .links-list {
     border: 1px solid;
     border-radius: 5px;
     padding: 16px;
@@ -33,7 +30,7 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<ul class="links-list">
+<ul>
   {#each tabs[selectedTabIndex].links as link}
     <li>
       <a href={link.url}>

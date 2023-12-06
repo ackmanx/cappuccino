@@ -21,6 +21,10 @@
     /* prettier-ignore */ console.log('^_^', 'mounted', tabs)
   })
 
+  function handleChangeTab(tabIndex: number) {
+    selectedTabIndex = tabIndex
+  }
+
   function handleAddNewCard() {
     handleEditCard(null)
   }
@@ -56,7 +60,7 @@
 {#if tabs.length}
   <main>
     <AppHeader />
-    <NavBar {tabs} />
+    <NavBar {tabs} onChangeTab={handleChangeTab} />
     <LinksList {tabs} {selectedTabIndex} />
     <CardsList {tabs} {selectedTabIndex} />
   </main>
