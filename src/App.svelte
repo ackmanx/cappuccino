@@ -64,6 +64,7 @@
     cursor: pointer;
     font-size: 1.6rem;
     font-family: inherit;
+    border-bottom: 2px solid transparent;
   }
 
   button:hover {
