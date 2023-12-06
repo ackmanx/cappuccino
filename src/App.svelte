@@ -11,6 +11,7 @@
   import Card from './components/Card/Card.svelte'
   import Drawer from './components/Drawer/Drawer.svelte'
   import EditCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
+  import TabsList from './components/TabsList/TabsList.svelte'
   import type { Tab } from './types'
 
   let isDrawerOpen: boolean = false
@@ -96,15 +97,7 @@
   <main>
     <AppHeader />
 
-    <nav>
-      <ul>
-        {#each tabs as tab, index}
-          <li>
-            <button>{tab.title}</button>
-          </li>
-        {/each}
-      </ul>
-    </nav>
+    <TabsList {tabs} />
 
     <ul class="links-list">
       {#each tabs[selectedTabIndex].links as link}
