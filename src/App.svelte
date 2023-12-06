@@ -6,14 +6,10 @@
 <script lang="ts">
   import { onMount } from 'svelte'
 
-  import AddNewPlaceholder from './components/AddNewPlaceholder/AddNewPlaceholder.svelte'
   import AppHeader from './components/AppHeader/AppHeader.svelte'
-  import Card from './components/CardsList/Card.svelte'
   import CardsList from './components/CardsList/CardsList.svelte'
-  import Drawer from './components/Drawer/Drawer.svelte'
-  import EditCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'
-  import TabsList from './components/TabsList/TabsList.svelte'
+  import NavBar from './components/NavBar/NavBar.svelte'
   import type { Tab } from './types'
 
   let isDrawerOpen: boolean = false
@@ -60,7 +56,7 @@
 {#if tabs.length}
   <main>
     <AppHeader />
-    <TabsList {tabs} />
+    <NavBar {tabs} />
     <LinksList {tabs} {selectedTabIndex} />
     <CardsList {tabs} {selectedTabIndex} />
   </main>
