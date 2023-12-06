@@ -69,6 +69,15 @@
   button:hover {
     border-bottom: 2px solid #acacac;
   }
+
+  .cards-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 1rem;
+    align-items: flex-start;
+    grid-auto-rows: min-content;
+  }
 </style>
 
 <!--
@@ -90,8 +99,10 @@
       </ul>
     </nav>
 
-    {#each tabs[selectedTabIndex].cards as card, index}
-      <Card {card} cardIndex={index} />
-    {/each}
+    <div class="cards-list">
+      {#each tabs[selectedTabIndex].cards as card, index}
+        <Card {card} cardIndex={index} />
+      {/each}
+    </div>
   </main>
 {/if}
