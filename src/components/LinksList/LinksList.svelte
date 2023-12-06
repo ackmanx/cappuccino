@@ -19,8 +19,8 @@
   ul {
     display: flex;
     gap: 24px;
-    border: 1px solid;
-    border-radius: 5px;
+    /*border: 1px solid;*/
+    /*border-radius: 5px;*/
     padding: 16px;
   }
 </style>
