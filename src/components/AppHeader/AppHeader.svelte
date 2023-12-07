@@ -14,6 +14,7 @@
 <style>
   section {
     display: flex;
+    gap: 10px;
     justify-content: center;
     align-items: center;
     padding: 16px;
@@ -27,6 +28,10 @@
     border: 1px solid #b0b0b0;
     border-radius: 5px;
   }
+
+  img {
+      width: 80px;
+  }
 </style>
 
 <!--
@@ -35,6 +40,7 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section>
+  <img src="logo.svg" alt="" />
   <!-- svelte-ignore a11y-autofocus -->
   <input autofocus />
 </section>
