@@ -1,4 +1,4 @@
-# New Tab Dashboard
+# Cappuccino
 
 ## Development
 * Use `build:watch` to output to `dist` and have it automatically re-output on changes

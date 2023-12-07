@@ -8,6 +8,7 @@
 
   import AppHeader from './components/AppHeader/AppHeader.svelte'
   import CardsList from './components/CardsList/CardsList.svelte'
+  import Drawer from './components/Drawer/Drawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'
   import NavBar from './components/NavBar/NavBar.svelte'
   import type { Tab } from './types'
@@ -42,6 +43,10 @@
     // selectedCard = cardIndex ? cards[cardIndex] : null
     isDrawerOpen = true
   }
+
+  function handleEditTabs() {
+    isDrawerOpen = true
+  }
 </script>
 
 <!--
@@ -60,8 +65,12 @@
 {#if tabs.length}
   <main>
     <AppHeader />
-    <NavBar {tabs} {selectedTabIndex} onChangeTab={handleChangeTab} />
+    <NavBar {tabs} {selectedTabIndex} onChangeTab={handleChangeTab} onEditTabs={handleEditTabs} />
     <LinksList {tabs} {selectedTabIndex} />
     <CardsList {tabs} {selectedTabIndex} />
   </main>
 {/if}
+
+<Drawer isOpen={isDrawerOpen}>
+  <h1>hello world</h1>
+</Drawer>
