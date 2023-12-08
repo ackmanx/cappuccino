@@ -9,11 +9,12 @@
   import AppHeader from './components/AppHeader/AppHeader.svelte'
   import CardsList from './components/CardsList/CardsList.svelte'
   import Drawer from './components/Drawer/Drawer.svelte'
+  import NavTabDrawer from './components/Drawer/NavTabDrawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'
   import NavBar from './components/NavBar/NavBar.svelte'
   import type { Tab } from './types'
 
-  let isDrawerOpen: boolean = false
+  let isTabDrawerOpen: boolean = false
   let tabs: Tab[] = []
   let selectedTabIndex = 0
 
@@ -35,17 +36,17 @@
     return null
   }
 
-  function handleCancelEditCard() {
-    isDrawerOpen = false
+  function handleCloseDrawer() {
+    isTabDrawerOpen = false
   }
 
   function handleEditCard(cardIndex: number | null) {
     // selectedCard = cardIndex ? cards[cardIndex] : null
-    isDrawerOpen = true
+    isTabDrawerOpen = true
   }
 
   function handleEditTabs() {
-    isDrawerOpen = true
+    isTabDrawerOpen = true
   }
 </script>
 
@@ -71,6 +72,8 @@
   </main>
 {/if}
 
-<Drawer isOpen={isDrawerOpen}>
-  <h1>hello world</h1>
+<Drawer isOpen={isTabDrawerOpen}>
+  {#if isTabDrawerOpen}
+    <NavTabDrawer onClose={handleCloseDrawer} />
+  {/if}
 </Drawer>
