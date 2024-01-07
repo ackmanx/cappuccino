@@ -1,55 +1,82 @@
-<!--
-┌─┐┌─┐┬─┐┬┌─┐┌┬┐
-└─┐│  ├┬┘│├─┘ │
-└─┘└─┘┴└─┴┴   ┴
--->
 <script lang="ts">
-  export let isOpen: boolean
+    import {fade} from "svelte/transition"
+    import {getLayerConfig} from "../../context";
+
+    const layerConfig = getLayerConfig()
+
+    const onEsc = (event: KeyboardEvent) => {
+        if (event.code === "Escape") {
+            $layerConfig = {...$layerConfig, activate: false}
+        }
+    }
+
+    const onClickHandler = () => {
+        $layerConfig = {...$layerConfig, activate: false}
+    }
+
+    function customSlide(node: Element, {duration = 250}) {
+        return {
+            duration,
+            css: (t: number) => {
+                return `
+           transform: translateX(${-360 + t * 360}px);
+        `
+            },
+        }
+    }
+
+    function init(node: HTMLElement) {
+        node.focus()
+    }
 </script>
 
-<!--
-┌─┐┌─┐┌─┐
-│  └─┐└─┐
-└─┘└─┘└─┘
--->
+<svelte:window on:keydown={onEsc}/>
+{#if $layerConfig.activate}
+  <div
+    inert={!$layerConfig.activate}
+    role="dialog"
+    transition:customSlide={{ duration: 250 }}
+    class="drawer"
+  >
+    <button use:init on:click={onClickHandler}>&times;</button>
+    <div class="dialog-inner">
+      <slot/>
+    </div>
+  </div>
+  <div transition:fade={{ duration: 250 }} class="overlay" />
+{/if}
 <style>
-  section {
-    width: 50%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    flex-basis: 420px;
-    position: fixed;
-    top: 0;
-    transition: right 0.3s ease-in;
-    padding: 1.6rem;
-    z-index: 1;
-    background-color: var(--color-card-background);
-  }
+    .drawer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: var(--color-main-background);
+        height: 100vh;
+        width: 360px;
+        z-index: 4;
+    }
 
-  .open {
-    right: 0;
-  }
+    .overlay {
+        position: absolute;
+        inset: 0 0 0 0;
+        background-color: var(--color-text);
+        z-index: 3;
+        opacity: 0.6;
+    }
 
-  .closed {
-    right: -50%;
-  }
+    button {
+        background: transparent;
+        border: 0;
+        font-size: 4rem;
+        position: absolute;
+        right: 0;
+        width: 6rem;
+        padding: 0 1rem;
+        color: var(--text);
+    }
 
-  .overlay {
-    position: fixed;
-    inset: 0 0 0 0;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
+    :global(body:has(.overlay)) {
+        height: 100%;
+        overflow: hidden;
+    }
 </style>
-
-<!--
-┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
- │ ├┤ │││├─┘│  ├─┤ │ ├┤
- ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
--->
-<section class:open={isOpen} class:closed={!isOpen}>
-  {#if isOpen}
-    <slot />
-  {/if}
-</section>
-<div class:overlay={isOpen} />

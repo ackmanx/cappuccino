@@ -6,10 +6,12 @@
 <script lang="ts">
   import type { Card } from '../../types'
   import Button from '../inputs/Button/Button.svelte'
+  import {getLayerConfig} from "../../context";
 
   // Props
   export let card: Card
   export let cardIndex: number
+  let layerConfig = getLayerConfig()
   // export let onChangeSelectedCard: (cardIndex: number) => void
 </script>
 
@@ -53,9 +55,7 @@
   <div class="header">
     <h2>{card.title}</h2>
     <Button
-      handleClick={() => {
-        onChangeSelectedCard(cardIndex)
-      }}
+      onClick={() => {$layerConfig = {activate: true, type: 'drawer', subtype: 'card'}}}
     >
       <span class="material-symbols-outlined"> edit </span>
     </Button>

@@ -3,7 +3,10 @@
 └─┐│  ├┬┘│├─┘ │
 └─┘└─┘┴└─┴┴   ┴
 -->
-<script>
+<script lang="ts">
+    function init(node: HTMLElement) {
+        node.focus()
+    }
 </script>
 
 <!--
@@ -40,7 +43,6 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section>
-  <img src="logo.svg" alt="" />
-  <!-- svelte-ignore a11y-autofocus -->
-  <input autofocus />
+  <img src="logo.svg" alt="cappuccino logo" />
+  <input use:init />
 </section>
