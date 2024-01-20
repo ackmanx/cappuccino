@@ -4,10 +4,10 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
-  import type { Tab } from '../../types'
+  import type { TabType } from '../../types'
   import Button from '../inputs/Button/Button.svelte'
 
-  export let tabs: Tab[] = []
+  export let tabs: TabType[] = []
   export let selectedTabIndex: number = 0
   export let onChangeTab: (tabIndex: number) => void
   export let onEditTabs: () => void

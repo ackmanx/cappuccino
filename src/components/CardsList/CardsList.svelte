@@ -4,11 +4,11 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
-  import type { Tab } from '../../types'
   import Card from './Card.svelte'
+  import type { CardType } from '../../types'
 
-  export let tabs: Tab[] = []
-  export let selectedTabIndex = 0
+  export let cards: CardType[] = []
+  export let onChangeSelectedCard: (cardIndex:number) => void
 </script>
 
 <!--
@@ -33,7 +33,7 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section class="cards-list">
-  {#each tabs[selectedTabIndex].cards as card, index}
-    <Card {card} cardIndex={index} />
+  {#each cards as card, index}
+    <Card {card} cardIndex={index} {onChangeSelectedCard} />
   {/each}
 </section>

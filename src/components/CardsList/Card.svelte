@@ -4,15 +4,15 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
-  import type { Card } from '../../types'
+  import type { CardType } from '../../types'
   import Button from '../inputs/Button/Button.svelte'
   import {getLayerConfig} from "../../context";
 
   // Props
-  export let card: Card
+  export let card: CardType
   export let cardIndex: number
   let layerConfig = getLayerConfig()
-  // export let onChangeSelectedCard: (cardIndex: number) => void
+  export let onChangeSelectedCard: (cardIndex: number) => void
 </script>
 
 <!--
@@ -55,7 +55,7 @@
   <div class="header">
     <h2>{card.title}</h2>
     <Button
-      onClick={() => {$layerConfig = {activate: true, type: 'drawer', subtype: 'card'}}}
+      onClick={() => {$layerConfig = {activate: true, type: 'drawer', subtype: 'card'}; onChangeSelectedCard(cardIndex)}}
     >
       <span class="material-symbols-outlined"> edit </span>
     </Button>

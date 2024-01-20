@@ -7,6 +7,8 @@
   // Props
   export let className: string = ''
   export let onClick: (_) => void = () => {}
+  export let hasBackground: boolean = true
+  document.documentElement.style.cssText = '--color-accent: transparent'
 </script>
 
 <!--
@@ -17,10 +19,11 @@
 <style>
   button {
     color: var(--color-button-background);
-    background-color: var(--color-main-background);
+    background-color: var(--color-accent);
     border-radius: 8px;
+    font-size: 1.6rem;
     border: 2px solid transparent;
-    padding: 0.2em 0.5em 0 0.5em;
+    padding: 0.6rem 1.2rem;
     cursor: pointer;
     transition: all 0.25s;
   }

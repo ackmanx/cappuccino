@@ -1,11 +1,11 @@
-import type { Tab } from '../types'
+import type { TabType } from '../types'
 
 /*
  * These are examples of the data stored in local storage
  * It can be used for development to quickly get fresh valid data
  */
 
-const exampleLocalStorageTabsData: Tab[] = [
+const exampleLocalStorageTabsData: TabType[] = [
   {
     title: 'Pull Requests',
     links: [

@@ -1,20 +1,23 @@
 export interface AppStoreValue {
-  cards: Card[]
+  cards: CardType[]
 }
 
-export interface Tab {
+export interface TabType {
   title: string
-  links: {
-    label?: string
-    url?: string
-  }[]
-  cards: Card[]
+  links: LinkType[]
+  cards: CardType[]
 }
 
-export interface Card {
+export interface LinkType {
+  label?: string
+  url?: string
+}
+
+export interface CardType {
   title?: string
-  links: {
-    label?: string
-    url?: string
-  }[]
+  links: LinkType[]
+}
+
+export interface ChangeEvent {
+  currentTarget: HTMLInputElement
 }

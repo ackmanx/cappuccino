@@ -5,50 +5,66 @@
 -->
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { type Writable, writable } from 'svelte/store'
 
   import AppHeader from './components/AppHeader/AppHeader.svelte'
   import CardsList from './components/CardsList/CardsList.svelte'
   import Drawer from './components/Drawer/Drawer.svelte'
+  import SettingsDrawer from './components/Drawer/SettingsDrawer.svelte'
+  import UpdateCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
+  import UpdateTabDrawer from './components/Drawer/UpdateTabDrawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'
   import NavBar from './components/NavBar/NavBar.svelte'
-  import type { Tab } from './types'
-  import { getLayerConfig, setLayerConfig} from "./context"
+  import { getLayerConfig, setLayerConfig } from './context'
+  import type { CardType, TabType } from './types'
 
-  let tabs: Tab[] = []
+  let tabs: Writable<TabType[]> = writable([])
+
   let selectedTabIndex = 0
+  let selectedCardIndex = 0
+  let cards: CardType[] = []
   setLayerConfig()
   let layerConfig = getLayerConfig()
   onMount(() => {
-    tabs = JSON.parse(localStorage.getItem('appContent') ?? '[]')
-    /* prettier-ignore */ console.log('^_^', 'mounted', tabs)
-
+    const appContent = localStorage.getItem('appContent')
+    if (appContent) {
+      $tabs = JSON.parse(appContent)
+    }
+    cards = $tabs ? $tabs[selectedTabIndex].cards : []
+    /* prettier-ignore */ console.log('^_^', 'mounted', $tabs)
   })
 
   function handleChangeTab(tabIndex: number) {
     selectedTabIndex = tabIndex
   }
 
-  function handleAddNewCard() {
-    handleEditCard(null)
+  function handleChangeCard(cardIndex: number) {
+    selectedCardIndex = cardIndex
   }
 
-  function handleSaveCard(tab: Tab) {
-    // localStorage.setItem('cards', JSON.stringify(cards))
-    return null
-  }
-
-  function handleCancelEditCard() {
-      $layerConfig = {...$layerConfig, activate: false}
-  }
-
-  function handleEditCard(cardIndex: number | null) {
-    // selectedCard = cardIndex ? cards[cardIndex] : null
-      $layerConfig = {activate: true, type: "drawer", subtype: 'card'}
+  function handleSaveCard(card: CardType) {
+    const cardsUpdate = [
+      ...cards.slice(0, selectedCardIndex),
+      card,
+      ...cards.slice(selectedCardIndex + 1),
+    ]
+    console.log('cardupdate', cardsUpdate)
+    const tabUpdate = {
+      ...$tabs[selectedTabIndex],
+      cards: [...cardsUpdate],
+    }
+    const newAppState = [
+      ...$tabs.slice(0, selectedTabIndex),
+      tabUpdate,
+      ...$tabs.slice(selectedTabIndex + 1),
+    ]
+    console.log(newAppState)
+    $tabs = newAppState
+    localStorage.setItem('appContent', JSON.stringify(newAppState))
   }
 
   function handleEditTabs() {
-      $layerConfig = {activate: true, type: "drawer", subtype: 'tab'}
-
+    $layerConfig = { activate: true, type: 'drawer', subtype: 'tab' }
   }
 </script>
 
@@ -65,22 +81,31 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-{#if tabs.length}
+{#if $tabs.length}
   <main inert={$layerConfig.activate}>
     <AppHeader />
-    <NavBar {tabs} {selectedTabIndex} onChangeTab={handleChangeTab} onEditTabs={handleEditTabs} />
-    <LinksList {tabs} {selectedTabIndex} />
-    <CardsList {tabs} {selectedTabIndex} />
+    <NavBar
+      tabs={$tabs}
+      {selectedTabIndex}
+      onChangeTab={handleChangeTab}
+      onEditTabs={handleEditTabs}
+    />
+    <LinksList tabs={$tabs} {selectedTabIndex} />
+    <CardsList cards={$tabs[selectedTabIndex].cards} onChangeSelectedCard={handleChangeCard} />
   </main>
 {/if}
 
 <Drawer>
-  <h1>hello world</h1>
   {#if $layerConfig.subtype === 'grid'}
     Grid
   {:else if $layerConfig.subtype === 'tab'}
-    Tab
+    <UpdateTabDrawer tabs={tabs[selectedTabIndex]} />
   {:else if $layerConfig.subtype === 'card'}
-    Card
+    <UpdateCardDrawer
+      card={$tabs[selectedTabIndex].cards[selectedCardIndex]}
+      onSave={handleSaveCard}
+    />
+  {:else if $layerConfig.subtype === 'setting'}
+    <SettingsDrawer />
   {/if}
 </Drawer>

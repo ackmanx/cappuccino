@@ -4,9 +4,9 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
-  import type { Tab } from '../../types'
+  import type { TabType } from '../../types'
 
-  export let tabs: Tab[] = []
+  export let tabs: TabType[] = []
   export let selectedTabIndex = 0
 </script>
 

@@ -5,9 +5,13 @@
 -->
 <script lang="ts">
   // Props
+  import type {ChangeEvent} from "../../../types";
+
   export let label: string
   export let value: string | undefined
-  export let onChange
+  export let onChange: (event: ChangeEvent) => void
+  export let name: string
+  export let type: 'text' | 'number'
 </script>
 
 <!--
@@ -40,6 +44,7 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section>
-  <label for={label}>{label}</label>
-  <input id={label} type="text" {value} on:change={onChange} />
+  <label>{label}
+    <input {name} {type} {value} on:change={onChange} />
+  </label>
 </section>
