@@ -21,6 +21,7 @@
   let grabbed: number
   let tempCardState = { ...card }
   let isDragEnabled: boolean
+  let isDraggedOutside: boolean
 
   onMount(() => {
     if (!card) {
@@ -83,6 +84,11 @@
     console.log('dragEnter', currentTarget.dataset.index)
   }
 
+  function handleDragEnd(event: DragEvent) {
+    console.log('dragEnd', event.currentTarget)
+    draggedOver = -1
+  }
+
   function handleDrop(event: DragEvent) {
     console.log('onDrop', event.currentTarget)
     console.log('grabbed', grabbed)
@@ -131,10 +137,19 @@
     padding-top: 1rem;
   }
 
+  .hide {
+    display: none;
+  }
+
   li {
     display: flex;
     gap: 1.6rem;
     align-items: center;
+  }
+
+  ul {
+    z-index: 2;
+    position: relative;
   }
 
   /* Hmm how to do this... this was passing a generated class name before
@@ -169,7 +184,12 @@
   }
 
   .dragged-list-item {
-    border-bottom: 2px dashed var(--color-accent);
+    background-color: var(--color-card-background);
+  }
+
+  .out-of-bounds-overlay {
+    position: absolute;
+    inset: 0;
   }
 </style>
 
@@ -197,6 +217,7 @@
       on:dragstart={handleDragStart}
       on:drop={handleDrop}
       on:dragenter={handleDragEnter}
+      on:dragend={handleDragEnd}
     >
       <Button onClick={() => handleDeleteLink(index)}>
         <span class="delete-button">&times;</span>
@@ -227,10 +248,17 @@
     </li>
   {/each}
 </ul>
+<div
+  role="dialog"
+  class:hide={draggedOver === -1}
+  class="out-of-bounds-overlay"
+  data-index="-1"
+  on:dragenter={handleDragEnter}
+/>
 <div class="button-container">
   <Button onClick={handleAddNewLink}>new</Button>
 </div>
 <div class="button-container">
   <Button onClick={handleSave}>save</Button>
-  <Button classes="cancel-button" onClick={handleCancel}>cancel</Button>
+  <Button className="cancel-button" onClick={handleCancel}>cancel</Button>
 </div>
