@@ -3,6 +3,8 @@ import type { TabType } from '../types'
 /*
  * These are examples of the data stored in local storage
  * It can be used for development to quickly get fresh valid data
+ *
+ * Put this into key `appContent`
  */
 
 const exampleLocalStorageTabsData: TabType[] = [
