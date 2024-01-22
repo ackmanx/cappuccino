@@ -17,11 +17,10 @@
   export let onSave: (card: CardType) => void
 
   let layerConfig = getLayerConfig()
-  let draggedOver: number
+  let draggedOver: number = -1
   let grabbed: number
   let tempCardState = { ...card }
   let isDragEnabled: boolean
-  let isDraggedOutside: boolean
 
   onMount(() => {
     if (!card) {
