@@ -6,8 +6,11 @@ type LayerConfig = Writable<{
   type: 'modal' | 'drawer'
   subtype: 'tab' | 'card' | 'grid'
 }>
+
 type SettingsTypes = Writable<{ editable: boolean; color: string }>
+
 type LayerData = { cardIndex: number }
+
 type DraggableListType = Writable<{
   key: string
   grabbed: number
