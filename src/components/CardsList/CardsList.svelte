@@ -4,12 +4,23 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
-  import Card from './Card.svelte'
   import type { CardType } from '../../types'
+  import Card from './Card.svelte'
 
   export let cards: CardType[] = []
-  export let onChangeSelectedCard: (cardIndex:number) => void
+  export let onChangeSelectedCard: (cardIndex: number) => void
 </script>
+
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
+<section class="cards-list">
+  {#each cards as card, index}
+    <Card {card} cardIndex={index} {onChangeSelectedCard} />
+  {/each}
+</section>
 
 <!--
 ┌─┐┌─┐┌─┐
@@ -26,14 +37,3 @@
     grid-auto-rows: min-content;
   }
 </style>
-
-<!--
-┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
- │ ├┤ │││├─┘│  ├─┤ │ ├┤
- ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
--->
-<section class="cards-list">
-  {#each cards as card, index}
-    <Card {card} cardIndex={index} {onChangeSelectedCard} />
-  {/each}
-</section>

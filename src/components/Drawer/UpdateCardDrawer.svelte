@@ -61,8 +61,8 @@
   function handleDragStart(event: DragEvent) {
     if (event) {
       const currentTarget = event.currentTarget as HTMLButtonElement
-      console.log('dragStart', currentTarget.dataset.index)
-      if (currentTarget.dataset.index) {
+      console.log('dragStart', currentTarget)
+      if (typeof currentTarget.dataset.index !== 'undefined') {
         grabbed = parseInt(currentTarget.dataset.index)
       }
     }
@@ -124,75 +124,6 @@
 </script>
 
 <!--
-┌─┐┌─┐┌─┐
-│  └─┐└─┐
-└─┘└─┘└─┘
--->
-<style>
-  .button-container {
-    display: flex;
-    font-size: 1.6rem;
-    gap: 1.6rem;
-    padding-top: 1rem;
-  }
-
-  .hide {
-    display: none;
-  }
-
-  li {
-    display: flex;
-    gap: 1.6rem;
-    align-items: center;
-  }
-
-  ul {
-    z-index: 2;
-    position: relative;
-  }
-
-  /* Hmm how to do this... this was passing a generated class name before
-  But now this is actual CSS so how to pass these styles to a component?*/
-  .delete-button {
-    background-color: transparent;
-    color: var(--color-text);
-    font-size: 2.4rem;
-    height: 4rem;
-    padding: 0 0.5rem;
-  }
-
-  /*.cancel-button {*/
-  /*  text-align: right;*/
-  /*  margin-bottom: -10px;*/
-  /*}*/
-
-  .drag-button {
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    border: 0;
-    background: transparent;
-    cursor: grab;
-  }
-
-  .list-item {
-    display: flex;
-    gap: 1.6rem;
-    align-items: center;
-    border-bottom: 2px solid var(--color-card-background);
-  }
-
-  .dragged-list-item {
-    background-color: var(--color-card-background);
-  }
-
-  .out-of-bounds-overlay {
-    position: absolute;
-    inset: 0;
-  }
-</style>
-
-<!--
 ┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
@@ -218,7 +149,7 @@
       on:dragenter={handleDragEnter}
       on:dragend={handleDragEnd}
     >
-      <Button onClick={() => handleDeleteLink(index)}>
+      <Button --accent-color="transparent" onClick={() => handleDeleteLink(index)}>
         <span class="delete-button">&times;</span>
       </Button>
       <TextField
@@ -261,3 +192,57 @@
   <Button onClick={handleSave}>save</Button>
   <Button className="cancel-button" onClick={handleCancel}>cancel</Button>
 </div>
+
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
+<style>
+  .button-container {
+    display: flex;
+    font-size: 1.6rem;
+    gap: 1.6rem;
+    padding: 1rem 0;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  li {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+  }
+
+  ul {
+    z-index: 2;
+    position: relative;
+  }
+
+  .drag-button {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    border: 0;
+    background: transparent;
+    cursor: grab;
+  }
+
+  .list-item {
+    display: flex;
+    gap: 1.6rem;
+    align-items: center;
+    border-bottom: 2px solid var(--color-card-background);
+  }
+
+  .dragged-list-item {
+    background-color: var(--color-card-background);
+  }
+
+  .out-of-bounds-overlay {
+    position: absolute;
+    inset: 0;
+  }
+</style>

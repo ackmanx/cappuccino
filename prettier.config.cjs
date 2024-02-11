@@ -6,7 +6,7 @@ module.exports = {
   printWidth: 100,
   // Intellij cannot format Svelte files with prettier without explicitly referencing the plugin
   plugins: ['prettier-plugin-svelte', '@trivago/prettier-plugin-sort-imports'],
-  svelteSortOrder: 'options-scripts-styles-markup',
+  //svelteSortOrder: 'options-scripts-styles-markup',
   // trivago/prettier-plugin-sort-imports
   importOrder: ['<THIRD_PARTY_MODULES>', '^[@]', '^[$]', '^[./]'],
   importOrderSeparation: true,

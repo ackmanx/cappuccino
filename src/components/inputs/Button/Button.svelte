@@ -7,8 +7,7 @@
   // Props
   export let className: string = ''
   export let onClick: (_) => void = () => {}
-  export let hasBackground: boolean = true
-  document.documentElement.style.cssText = '--color-accent: transparent'
+  //document.documentElement.style.cssText = '--color-accent: transparent'
 </script>
 
 <!--

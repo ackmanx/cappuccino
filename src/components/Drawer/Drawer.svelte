@@ -20,7 +20,7 @@
       duration,
       css: (t: number) => {
         return `
-           transform: translateX(${-360 + t * 360}px);
+           transform: translateX(${360 + t * -360}px);
         `
       },
     }
@@ -35,7 +35,7 @@
   .drawer {
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
     background-color: var(--color-main-background);
     height: 100vh;
     width: 360px;
@@ -87,5 +87,10 @@
       <slot />
     </div>
   </section>
-  <div transition:fade={{ duration: 250 }} class="overlay" />
+  <div
+    role="dialog"
+    transition:fade={{ duration: 250 }}
+    class="overlay"
+    on:click={onClickHandler}
+  />
 {/if}

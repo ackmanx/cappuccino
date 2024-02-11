@@ -12,6 +12,7 @@
   import Drawer from './components/Drawer/Drawer.svelte'
   import SettingsDrawer from './components/Drawer/SettingsDrawer.svelte'
   import UpdateCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
+  import UpdateGridDrawer from './components/Drawer/UpdateGridDrawer.svelte'
   import UpdateTabDrawer from './components/Drawer/UpdateTabDrawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'
   import NavBar from './components/NavBar/NavBar.svelte'
@@ -19,17 +20,19 @@
   import type { CardType, TabType } from './types'
 
   let tabs: Writable<TabType[]> = writable([])
-
   let selectedTabIndex = 0
   let selectedCardIndex = 0
   let cards: CardType[] = []
+
   setLayerConfig()
   let layerConfig = getLayerConfig()
+
   onMount(() => {
     const appContent = localStorage.getItem('appContent')
     if (appContent) {
       $tabs = JSON.parse(appContent)
     }
+
     cards = $tabs ? $tabs[selectedTabIndex].cards : []
     /* prettier-ignore */ console.log('^_^', 'mounted', $tabs)
   })
@@ -69,14 +72,6 @@
 </script>
 
 <!--
-┌─┐┌─┐┌─┐
-│  └─┐└─┐
-└─┘└─┘└─┘
--->
-<style>
-</style>
-
-<!--
 ┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
@@ -97,9 +92,9 @@
 
 <Drawer>
   {#if $layerConfig.subtype === 'grid'}
-    Grid
+    <UpdateGridDrawer {tabs} {selectedTabIndex} />
   {:else if $layerConfig.subtype === 'tab'}
-    <UpdateTabDrawer tabs={tabs[selectedTabIndex]} />
+    <UpdateTabDrawer {tabs} />
   {:else if $layerConfig.subtype === 'card'}
     <UpdateCardDrawer
       card={$tabs[selectedTabIndex].cards[selectedCardIndex]}
@@ -109,3 +104,11 @@
     <SettingsDrawer />
   {/if}
 </Drawer>
+
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
+<style>
+</style>

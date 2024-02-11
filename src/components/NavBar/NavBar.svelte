@@ -14,6 +14,27 @@
 </script>
 
 <!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
+<nav>
+  <ul>
+    {#each tabs as tab, index}
+      <li>
+        <button class:active={selectedTabIndex === index} on:click={() => onChangeTab(index)}>
+          {tab.title}
+        </button>
+      </li>
+    {/each}
+  </ul>
+
+  <Button onClick={onEditTabs}>
+    <span class="material-symbols-outlined"> edit </span>
+  </Button>
+</nav>
+
+<!--
 ┌─┐┌─┐┌─┐
 │  └─┐└─┐
 └─┘└─┘└─┘
@@ -26,8 +47,10 @@
 
   ul {
     display: flex;
+    align-items: center;
     gap: 24px;
-    margin-right: 16px;
+    margin: 0;
+    padding-right: 1rem;
   }
 
   button {
@@ -48,24 +71,3 @@
     border-bottom: 2px solid var(--color-text);
   }
 </style>
-
-<!--
-┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
- │ ├┤ │││├─┘│  ├─┤ │ ├┤
- ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
--->
-<nav>
-  <ul>
-    {#each tabs as tab, index}
-      <li>
-        <button class:active={selectedTabIndex === index} on:click={() => onChangeTab(index)}>
-          {tab.title}
-        </button>
-      </li>
-    {/each}
-  </ul>
-
-  <Button onClick={onEditTabs}>
-    <span class="material-symbols-outlined"> edit </span>
-  </Button>
-</nav>

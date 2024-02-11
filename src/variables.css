@@ -4,7 +4,7 @@
     --color-text: #213547;
     --color-button-background: #213547;
     --color-card-background: #ececec;
-    --color-accent: #cc0000;
+    --color-accent: #CE7432;
   }
 }
 
@@ -14,6 +14,6 @@
     --color-text: rgba(255, 255, 255, 0.87);
     --color-button-background: rgba(255, 255, 255, 0.87);
     --color-card-background: #3c3c3c;
-    --color-accent: #cc0000;
+    --color-accent: #CE7432;
   }
 }
