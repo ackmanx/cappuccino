@@ -11,6 +11,15 @@
 </script>
 
 <!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
+<button class={className} on:click={onClick}>
+  <slot />
+</button>
+
+<!--
 ┌─┐┌─┐┌─┐
 │  └─┐└─┐
 └─┘└─┘└─┘
@@ -36,12 +45,3 @@
     border: 2px solid var(--color-button-background);
   }
 </style>
-
-<!--
-┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
- │ ├┤ │││├─┘│  ├─┤ │ ├┤
- ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
--->
-<button class={className} on:click={onClick}>
-  <slot />
-</button>

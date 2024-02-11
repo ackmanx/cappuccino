@@ -11,19 +11,6 @@
 </script>
 
 <!--
-┌─┐┌─┐┌─┐
-│  └─┐└─┐
-└─┘└─┘└─┘
--->
-<style>
-  section {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-</style>
-
-<!--
 ┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
@@ -37,3 +24,16 @@
     <span class="material-symbols-outlined"> close </span>
   </Button>
 </section>
+
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
+<style>
+  section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+</style>

@@ -10,6 +10,15 @@
 </script>
 
 <!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
+<button on:click={onClickNewPlaceholder}>
+  <img src={AddIcon} alt="add card icon" />
+</button>
+
+<!--
 ┌─┐┌─┐┌─┐
 │  └─┐└─┐
 └─┘└─┘└─┘
@@ -35,12 +44,3 @@
     filter: contrast(0);
   }
 </style>
-
-<!--
-┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
- │ ├┤ │││├─┘│  ├─┤ │ ├┤
- ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
--->
-<button on:click={onClickNewPlaceholder}>
-  <img src={AddIcon} alt="add card icon" />
-</button>

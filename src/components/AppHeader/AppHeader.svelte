@@ -4,10 +4,20 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
-    function init(node: HTMLElement) {
-        node.focus()
-    }
+  function init(node: HTMLElement) {
+    node.focus()
+  }
 </script>
+
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
+<section>
+  <img src="logo.svg" alt="cappuccino logo" />
+  <input use:init />
+</section>
 
 <!--
 ┌─┐┌─┐┌─┐
@@ -33,16 +43,6 @@
   }
 
   img {
-      width: 80px;
+    width: 80px;
   }
 </style>
-
-<!--
-┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
- │ ├┤ │││├─┘│  ├─┤ │ ├┤
- ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
--->
-<section>
-  <img src="logo.svg" alt="cappuccino logo" />
-  <input use:init />
-</section>

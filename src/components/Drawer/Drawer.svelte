@@ -31,6 +31,28 @@
   }
 </script>
 
+<svelte:window on:keydown={onEsc} />
+
+{#if $layerConfig.activate}
+  <section
+    inert={!$layerConfig.activate}
+    role="dialog"
+    transition:customSlide={{ duration: 250 }}
+    class="drawer"
+  >
+    <div class="button-container"><button use:init on:click={onClickHandler}>&times;</button></div>
+    <div class="dialog-inner">
+      <slot />
+    </div>
+  </section>
+  <div
+    role="dialog"
+    transition:fade={{ duration: 250 }}
+    class="overlay"
+    on:click={onClickHandler}
+  />
+{/if}
+
 <style>
   .drawer {
     position: absolute;
@@ -73,24 +95,3 @@
     overflow: hidden;
   }
 </style>
-
-<svelte:window on:keydown={onEsc} />
-{#if $layerConfig.activate}
-  <section
-    inert={!$layerConfig.activate}
-    role="dialog"
-    transition:customSlide={{ duration: 250 }}
-    class="drawer"
-  >
-    <div class="button-container"><button use:init on:click={onClickHandler}>&times;</button></div>
-    <div class="dialog-inner">
-      <slot />
-    </div>
-  </section>
-  <div
-    role="dialog"
-    transition:fade={{ duration: 250 }}
-    class="overlay"
-    on:click={onClickHandler}
-  />
-{/if}

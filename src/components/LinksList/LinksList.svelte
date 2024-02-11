@@ -18,25 +18,6 @@
 </script>
 
 <!--
-┌─┐┌─┐┌─┐
-│  └─┐└─┐
-└─┘└─┘└─┘
--->
-<style>
-  ul {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-    /*border: 1px solid;*/
-    /*border-radius: 5px;*/
-    padding: 16px;
-  }
-  .edit {
-    margin-left: auto;
-  }
-</style>
-
-<!--
 ┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
@@ -55,3 +36,22 @@
     </Button>
   </li>
 </ul>
+
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
+<style>
+  ul {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    /*border: 1px solid;*/
+    /*border-radius: 5px;*/
+    padding: 16px;
+  }
+  .edit {
+    margin-left: auto;
+  }
+</style>

@@ -4,8 +4,7 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
-  // Props
-  import type {ChangeEvent} from "../../../types";
+  import type { ChangeEvent } from '../../../types'
 
   export let label: string
   export let value: string | undefined
@@ -13,6 +12,18 @@
   export let name: string
   export let type: 'text' | 'number'
 </script>
+
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
+<section>
+  <label
+    >{label}
+    <input {name} {type} {value} on:change={onChange} />
+  </label>
+</section>
 
 <!--
 ┌─┐┌─┐┌─┐
@@ -37,14 +48,3 @@
     display: block;
   }
 </style>
-
-<!--
-┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
- │ ├┤ │││├─┘│  ├─┤ │ ├┤
- ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
--->
-<section>
-  <label>{label}
-    <input {name} {type} {value} on:change={onChange} />
-  </label>
-</section>
