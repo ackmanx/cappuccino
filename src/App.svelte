@@ -28,12 +28,13 @@
   let layerConfig = getLayerConfig()
 
   onMount(() => {
-    const appContent = localStorage.getItem('appContent')
+    const appContent = localStorage.getItem('appContent') ?? '[]'
+
     if (appContent) {
       $tabs = JSON.parse(appContent)
     }
 
-    cards = $tabs ? $tabs[selectedTabIndex].cards : []
+    cards = $tabs?.length ? $tabs[selectedTabIndex].cards : []
     /* prettier-ignore */ console.log('^_^', 'mounted', $tabs)
   })
 
@@ -76,19 +77,17 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-{#if $tabs.length}
-  <main inert={$layerConfig.activate}>
-    <AppHeader />
-    <NavBar
-      tabs={$tabs}
-      {selectedTabIndex}
-      onChangeTab={handleChangeTab}
-      onEditTabs={handleEditTabs}
-    />
-    <LinksList tabs={$tabs} {selectedTabIndex} />
-    <CardsList cards={$tabs[selectedTabIndex].cards} onChangeSelectedCard={handleChangeCard} />
-  </main>
-{/if}
+<main inert={$layerConfig.activate}>
+  <AppHeader />
+  <NavBar
+    tabs={$tabs}
+    {selectedTabIndex}
+    onChangeTab={handleChangeTab}
+    onEditTabs={handleEditTabs}
+  />
+  <LinksList tabs={$tabs} {selectedTabIndex} />
+  <CardsList {cards} onChangeSelectedCard={handleChangeCard} />
+</main>
 
 <Drawer>
   {#if $layerConfig.subtype === 'grid'}
@@ -96,10 +95,7 @@
   {:else if $layerConfig.subtype === 'tab'}
     <UpdateTabDrawer {tabs} />
   {:else if $layerConfig.subtype === 'card'}
-    <UpdateCardDrawer
-      card={$tabs[selectedTabIndex].cards[selectedCardIndex]}
-      onSave={handleSaveCard}
-    />
+    <UpdateCardDrawer card={cards} onSave={handleSaveCard} />
   {:else if $layerConfig.subtype === 'setting'}
     <SettingsDrawer />
   {/if}

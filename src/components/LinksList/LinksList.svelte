@@ -23,13 +23,15 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <ul>
-  {#each tabs[selectedTabIndex].links as link}
-    <li>
-      <a href={link.url}>
-        {link.label}
-      </a>
-    </li>
-  {/each}
+  {#if tabs.length}
+    {#each tabs[selectedTabIndex].links as link}
+      <li>
+        <a href={link.url}>
+          {link.label}
+        </a>
+      </li>
+    {/each}
+  {/if}
   <li class="edit">
     <Button onClick={openGridDrawer}>
       <span class="material-symbols-outlined"> edit </span>

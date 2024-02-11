@@ -17,9 +17,11 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section class="cards-list">
-  {#each cards as card, index}
-    <Card {card} cardIndex={index} {onChangeSelectedCard} />
-  {/each}
+  {#if cards.length}
+    {#each cards as card, index}
+      <Card {card} cardIndex={index} {onChangeSelectedCard} />
+    {/each}
+  {/if}
 </section>
 
 <!--
