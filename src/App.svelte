@@ -95,7 +95,7 @@
   {:else if $layerConfig.subtype === 'tab'}
     <UpdateTabDrawer {tabs} />
   {:else if $layerConfig.subtype === 'card'}
-    <UpdateCardDrawer card={cards} onSave={handleSaveCard} />
+    <UpdateCardDrawer card={cards[selectedCardIndex]} onSave={handleSaveCard} />
   {:else if $layerConfig.subtype === 'setting'}
     <SettingsDrawer />
   {/if}

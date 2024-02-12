@@ -4,9 +4,9 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
+  import { getLayerConfig } from '../../context'
   import type { CardType } from '../../types'
   import Button from '../inputs/Button/Button.svelte'
-  import { getLayerConfig } from '../../context'
 
   // Props
   export let card: CardType
@@ -24,6 +24,7 @@
   <div class="header">
     <h2>{card.title}</h2>
     <Button
+      --color-accent="transparent"
       onClick={() => {
         $layerConfig = { activate: true, type: 'drawer', subtype: 'card' }
         onChangeSelectedCard(cardIndex)
