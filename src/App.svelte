@@ -22,7 +22,6 @@
   let tabs: Writable<TabType[]> = writable([])
   let selectedTabIndex = 0
   let selectedCardIndex = 0
-  let cards: CardType[] = []
 
   setLayerConfig()
   let layerConfig = getLayerConfig()
@@ -34,7 +33,6 @@
       $tabs = JSON.parse(appContent)
     }
 
-    cards = $tabs?.length ? $tabs[selectedTabIndex].cards : []
     /* prettier-ignore */ console.log('^_^', 'mounted', $tabs)
   })
 
@@ -48,9 +46,9 @@
 
   function handleSaveCard(card: CardType) {
     const cardsUpdate = [
-      ...cards.slice(0, selectedCardIndex),
+      ...$tabs[selectedTabIndex].cards.slice(0, selectedCardIndex),
       card,
-      ...cards.slice(selectedCardIndex + 1),
+      ...$tabs[selectedTabIndex].cards.slice(selectedCardIndex + 1),
     ]
     console.log('cardupdate', cardsUpdate)
     const tabUpdate = {
@@ -86,7 +84,7 @@
     onEditTabs={handleEditTabs}
   />
   <LinksList tabs={$tabs} {selectedTabIndex} />
-  <CardsList {cards} onChangeSelectedCard={handleChangeCard} />
+  <CardsList cards={$tabs[selectedTabIndex]?.cards} onChangeSelectedCard={handleChangeCard} />
 </main>
 
 <Drawer>
@@ -95,7 +93,10 @@
   {:else if $layerConfig.subtype === 'tab'}
     <UpdateTabDrawer {tabs} />
   {:else if $layerConfig.subtype === 'card'}
-    <UpdateCardDrawer card={cards[selectedCardIndex]} onSave={handleSaveCard} />
+    <UpdateCardDrawer
+      card={$tabs[selectedTabIndex].cards[selectedCardIndex]}
+      onSave={handleSaveCard}
+    />
   {:else if $layerConfig.subtype === 'setting'}
     <SettingsDrawer />
   {/if}

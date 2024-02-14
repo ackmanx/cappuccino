@@ -33,7 +33,7 @@
     {/each}
   {/if}
   <li class="edit">
-    <Button onClick={openGridDrawer}>
+    <Button --color-accent="transparent" onClick={openGridDrawer}>
       <span class="material-symbols-outlined"> edit </span>
     </Button>
   </li>

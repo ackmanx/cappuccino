@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
   import type { Writable } from 'svelte/store'
 
   import type { CardType, ChangeEvent, LinkType, TabType } from '../../types'
@@ -9,7 +8,7 @@
   import LinkInput from './LinkInput.svelte'
 
   //props
-  export let tabs: Writable<TabType>
+  export let tabs: Writable<TabType[]>
   export let selectedTabIndex: number
   // variables
   let isDragEnabled: boolean

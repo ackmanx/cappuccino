@@ -29,7 +29,7 @@
     {/each}
   </ul>
 
-  <Button onClick={onEditTabs}>
+  <Button --color-accent="transparent" onClick={onEditTabs}>
     <span class="material-symbols-outlined"> edit </span>
   </Button>
 </nav>
