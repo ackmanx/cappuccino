@@ -23,12 +23,9 @@
     tempTab.cards = cards
   }
 
-  function handleTabLinkSave() {
+  function handleSaveAll() {
     $tabs[selectedTabIndex].links = tempTab.links
     localStorage.setItem('appContent', JSON.stringify($tabs))
-  }
-
-  function handleCardOrderSave() {
     $tabs[selectedTabIndex].cards = tempTab.cards
     localStorage.setItem('appContent', JSON.stringify($tabs))
   }
@@ -49,8 +46,9 @@
   }
 </script>
 
-<h2>Update Tab links</h2>
-<DraggableList onSave={handleTabLinkSave} onNew={handleNewLink} key="tabLinks">
+<h2>Update Tab</h2>
+<p>Update tab links, their order or content</p>
+<DraggableList key="tabLinks" onNew={handleNewLink}>
   {#each tempTab?.links as link, index}
     <DraggableItem
       key="tabLinks"
@@ -63,9 +61,9 @@
     </DraggableItem>
   {/each}
 </DraggableList>
-
-<h2>Change Card Grid Order</h2>
-<DraggableList key="cardOrder" onSave={handleCardOrderSave} onNew={handleNewCard}>
+<DraggableList key="cardOrder" onNew={handleNewCard} onSave={handleSaveAll}>
+  <h2>Change Card Grid</h2>
+  <p>Update grid order or card titles</p>
   {#each tempTab.cards as card, index}
     <DraggableItem
       key="cardOrder"

@@ -16,7 +16,7 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<section class="cards-list">
+<section class="cards-list masonry">
   {#if cards.length}
     {#each cards as card, index}
       <Card {card} cardIndex={index} {onChangeSelectedCard} />
@@ -32,10 +32,10 @@
 <style>
   section {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: masonry;
+    justify-content: center;
     gap: 1rem;
-    align-items: flex-start;
     grid-auto-rows: min-content;
   }
 </style>

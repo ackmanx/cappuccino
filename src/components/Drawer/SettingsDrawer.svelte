@@ -1,1 +1,1 @@
-<div>settings drawer</div>
+<div>settings drawer - coming soon</div>

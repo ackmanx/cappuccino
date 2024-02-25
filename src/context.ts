@@ -4,12 +4,10 @@ import { type Writable, writable } from 'svelte/store'
 type LayerConfig = Writable<{
   activate: boolean
   type: 'modal' | 'drawer'
-  subtype: 'tab' | 'card' | 'grid'
+  subtype: 'tab' | 'card' | 'grid' | 'setting'
 }>
 
 type SettingsTypes = Writable<{ editable: boolean; color: string }>
-
-type LayerData = { cardIndex: number }
 
 type DraggableListType = Writable<{
   key: string

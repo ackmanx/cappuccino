@@ -5,7 +5,9 @@
 -->
 <script lang="ts">
   import { getLayerConfig } from '../../context'
+  import EditIcon from '../../svgs/EditIcon.svelte'
   import type { CardType } from '../../types'
+  import Link from '../Link/Link.svelte'
   import Button from '../inputs/Button/Button.svelte'
 
   // Props
@@ -30,15 +32,15 @@
         onChangeSelectedCard(cardIndex)
       }}
     >
-      <span class="material-symbols-outlined"> edit </span>
+      <EditIcon />
     </Button>
   </div>
   <ul>
     {#each card.links as { label, url }}
       <li>
-        <a href={url}>
+        <Link href={url}>
           {label}
-        </a>
+        </Link>
       </li>
     {/each}
   </ul>

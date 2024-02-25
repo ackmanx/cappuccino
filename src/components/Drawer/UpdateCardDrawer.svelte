@@ -7,19 +7,18 @@
   import { onMount } from 'svelte'
 
   import { getLayerConfig } from '../../context'
-  import DragIcon from '../../svgs/DragIcon.svelte'
-  import type { CardType, ChangeEvent } from '../../types'
-  import Button from '../inputs/Button/Button.svelte'
+  import type { CardType, ChangeEvent, LinkType } from '../../types'
+  import DraggableItem from '../DraggableList/DraggableItem.svelte'
+  import DraggableList from '../DraggableList/DraggableList.svelte'
   import TextField from '../inputs/TextField/TextField.svelte'
+  import LinkInput from './LinkInput.svelte'
 
   // Props
   export let card: CardType
   export let onSave: (card: CardType) => void
 
   let layerConfig = getLayerConfig()
-  let draggedOver: number = -1
-  let grabbed: number
-  let tempCardState = { ...card }
+  let tempCard = { ...card }
   let isDragEnabled: boolean
 
   onMount(() => {
@@ -28,88 +27,27 @@
     }
   })
   function handleAddNewLink() {
-    tempCardState = {
-      ...tempCardState,
-      links: [...tempCardState.links, { url: 'https://', label: '' }],
-    }
-  }
-
-  function handleDeleteLink(linkIndex: number) {
-    const newLinkArray = [
-      ...tempCardState.links.slice(0, linkIndex),
-      ...tempCardState.links.slice(linkIndex + 1),
-    ]
-    tempCardState = {
-      ...tempCardState,
-      links: newLinkArray,
+    tempCard = {
+      ...tempCard,
+      links: [...tempCard.links, { url: 'https://', label: '' }],
     }
   }
 
   function handleUpdateLinks(event: ChangeEvent, linkIndex: number) {
-    const newLinkArray = [...tempCardState.links].map((link, index) =>
+    const newLinkArray = [...tempCard.links].map((link, index) =>
       index === linkIndex
-        ? { ...tempCardState.links[index], [event.currentTarget.name]: event.currentTarget.value }
+        ? { ...tempCard.links[index], [event.currentTarget.name]: event.currentTarget.value }
         : link
     )
 
-    tempCardState = {
-      ...tempCardState,
+    tempCard = {
+      ...tempCard,
       links: newLinkArray,
     }
   }
 
-  function handleDragStart(event: DragEvent) {
-    if (event) {
-      const currentTarget = event.currentTarget as HTMLButtonElement
-      console.log('dragStart', currentTarget)
-      if (typeof currentTarget.dataset.index !== 'undefined') {
-        grabbed = parseInt(currentTarget.dataset.index)
-      }
-    }
-  }
-
-  const enableDropping = (event: DragEvent) => {
-    event.preventDefault()
-  }
-
-  function handleDragEnter(event: DragEvent) {
-    const currentTarget = event.currentTarget as HTMLButtonElement
-    const index = currentTarget.dataset.index
-
-    if (index) {
-      draggedOver = parseInt(index)
-    }
-
-    console.log('dragEnter', currentTarget.dataset.index)
-  }
-
-  function handleDragEnd(event: DragEvent) {
-    console.log('dragEnd', event.currentTarget)
-    draggedOver = -1
-  }
-
-  function handleDrop(event: DragEvent) {
-    console.log('onDrop', event.currentTarget)
-    console.log('grabbed', grabbed)
-    const currentTarget = event.currentTarget as HTMLButtonElement
-    const index = currentTarget.dataset.index
-    console.log('index', index)
-    if (index) {
-      const linksToChange = tempCardState.links
-      const linkToMove = linksToChange.splice(grabbed, 1)
-      linksToChange.splice(parseInt(index), 0, linkToMove[0])
-      const newCard = {
-        ...tempCardState,
-        links: linksToChange,
-      }
-      console.log('arrayChange', newCard)
-      tempCardState = newCard
-      draggedOver = -1
-    }
-  }
-
   function handleSave() {
-    onSave(tempCardState)
+    onSave(tempCard)
     handleCancel()
   }
 
@@ -119,7 +57,10 @@
 
   function handleTitleInput(event: ChangeEvent) {
     const currentTarget = event.currentTarget as HTMLInputElement
-    tempCardState.title = currentTarget.value
+    tempCard.title = currentTarget.value
+  }
+  function handleArrayUpdate(links: LinkType[]) {
+    tempCard.links = links
   }
 </script>
 
@@ -129,120 +70,24 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <TextField
-  value={tempCardState?.title}
+  value={tempCard?.title}
   onChange={handleTitleInput}
   name="label"
   type="text"
   label="title"
 />
 <p>Changing the order, create new, delete, or edit the links</p>
-<ul>
-  {#each tempCardState?.links as link, index}
-    <li
-      class="list-item"
-      class:dragged-list-item={draggedOver === index}
-      on:dragover={enableDropping}
-      data-index={index}
-      draggable={isDragEnabled}
-      on:dragstart={handleDragStart}
-      on:drop={handleDrop}
-      on:dragenter={handleDragEnter}
-      on:dragend={handleDragEnd}
+
+<DraggableList onSave={handleSave} onNew={handleAddNewLink} key="tabLinks">
+  {#each tempCard?.links as link, index}
+    <DraggableItem
+      key="tabLinks"
+      onArrayUpdate={handleArrayUpdate}
+      {isDragEnabled}
+      dataArray={tempCard.links}
+      {index}
     >
-      <Button --accent-color="transparent" onClick={() => handleDeleteLink(index)}>
-        <span class="delete-button">&times;</span>
-      </Button>
-      <TextField
-        value={link.label}
-        onChange={(event) => handleUpdateLinks(event, index)}
-        name="label"
-        type="text"
-        label="label"
-      />
-      <TextField
-        value={link.url}
-        onChange={(event) => handleUpdateLinks(event, index)}
-        name="url"
-        type="text"
-        label="url"
-      />
-      <button
-        class="drag-button"
-        on:mouseover={() => (isDragEnabled = true)}
-        on:mouseout={() => (isDragEnabled = false)}
-        on:focus={() => {}}
-        on:blur={() => {}}
-      >
-        <DragIcon />
-      </button>
-    </li>
+      <LinkInput onUpdateLink={handleUpdateLinks} element={link} {index} />
+    </DraggableItem>
   {/each}
-</ul>
-<div
-  role="dialog"
-  class:hide={draggedOver === -1}
-  class="out-of-bounds-overlay"
-  data-index="-1"
-  on:dragenter={handleDragEnter}
-/>
-<div class="button-container">
-  <Button onClick={handleAddNewLink}>new</Button>
-</div>
-<div class="button-container">
-  <Button onClick={handleSave}>save</Button>
-  <Button className="cancel-button" onClick={handleCancel}>cancel</Button>
-</div>
-
-<!--
-┌─┐┌─┐┌─┐
-│  └─┐└─┐
-└─┘└─┘└─┘
--->
-<style>
-  .button-container {
-    display: flex;
-    font-size: 1.6rem;
-    gap: 1.6rem;
-    padding: 1rem 0;
-  }
-
-  .hide {
-    display: none;
-  }
-
-  li {
-    display: flex;
-    gap: 1.6rem;
-    align-items: center;
-  }
-
-  ul {
-    z-index: 2;
-    position: relative;
-  }
-
-  .drag-button {
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    border: 0;
-    background: transparent;
-    cursor: grab;
-  }
-
-  .list-item {
-    display: flex;
-    gap: 1.6rem;
-    align-items: center;
-    border-bottom: 2px solid var(--color-card-background);
-  }
-
-  .dragged-list-item {
-    background-color: var(--color-card-background);
-  }
-
-  .out-of-bounds-overlay {
-    position: absolute;
-    inset: 0;
-  }
-</style>
+</DraggableList>

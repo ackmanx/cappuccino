@@ -5,7 +5,9 @@
 -->
 <script lang="ts">
   import { getLayerConfig } from '../../context'
+  import EditIcon from '../../svgs/EditIcon.svelte'
   import type { TabType } from '../../types'
+  import Link from '../Link/Link.svelte'
   import Button from '../inputs/Button/Button.svelte'
 
   const layerConfig = getLayerConfig()
@@ -26,15 +28,15 @@
   {#if tabs.length}
     {#each tabs[selectedTabIndex].links as link}
       <li>
-        <a href={link.url}>
+        <Link href={link.url}>
           {link.label}
-        </a>
+        </Link>
       </li>
     {/each}
   {/if}
   <li class="edit">
     <Button --color-accent="transparent" onClick={openGridDrawer}>
-      <span class="material-symbols-outlined"> edit </span>
+      <EditIcon />
     </Button>
   </li>
 </ul>
@@ -49,8 +51,6 @@
     display: flex;
     gap: 24px;
     align-items: center;
-    /*border: 1px solid;*/
-    /*border-radius: 5px;*/
     padding: 16px;
   }
   .edit {

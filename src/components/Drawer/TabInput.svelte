@@ -8,12 +8,10 @@
   console.log('LinkInput', element)
 </script>
 
-<div>
-  <TextField
-    value={element.title}
-    onChange={(event) => onUpdateTab(event, index)}
-    name="title"
-    type="text"
-    label="title"
-  />
-</div>
+<TextField
+  value={element.title}
+  onChange={(event) => onUpdateTab(event, index)}
+  name="title"
+  type="text"
+  label="title"
+/>

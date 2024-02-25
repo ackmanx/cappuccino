@@ -1,6 +1,7 @@
 <script lang="ts">
   import { getContextByDraggableList } from '../../context'
   import DragIcon from '../../svgs/DragIcon.svelte'
+  import RemoveIcon from '../../svgs/RemoveIcon.svelte'
   import Button from '../inputs/Button/Button.svelte'
 
   export let key: string
@@ -10,6 +11,7 @@
   export let isDragEnabled: boolean
 
   const draggableList = getContextByDraggableList(key)
+  console.log('draggableList', key, $draggableList)
   function handleDragStart(event: DragEvent) {
     if (event) {
       const currentTarget = event.currentTarget as HTMLButtonElement
@@ -75,7 +77,7 @@
   on:dragend={handleDragEnd}
 >
   <Button --color-accent="transparent" onClick={() => handleDelete(index)}>
-    <span class="delete-button">&times;</span>
+    <RemoveIcon />
   </Button>
   <slot />
   <button
@@ -101,7 +103,7 @@
 
   .list-item {
     display: flex;
-    gap: 1.6rem;
+    gap: 1rem;
     align-items: center;
   }
 

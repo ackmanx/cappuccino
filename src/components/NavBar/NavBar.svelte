@@ -4,6 +4,7 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
+  import EditIcon from '../../svgs/EditIcon.svelte'
   import type { TabType } from '../../types'
   import Button from '../inputs/Button/Button.svelte'
 
@@ -30,7 +31,7 @@
   </ul>
 
   <Button --color-accent="transparent" onClick={onEditTabs}>
-    <span class="material-symbols-outlined"> edit </span>
+    <EditIcon /> edit tabs
   </Button>
 </nav>
 

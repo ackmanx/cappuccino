@@ -18,12 +18,10 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<section>
-  <label
-    >{label}
-    <input {name} {type} {value} on:change={onChange} />
-  </label>
-</section>
+<label
+  >{label}
+  <input {name} {type} {value} on:change={onChange} />
+</label>
 
 <!--
 ┌─┐┌─┐┌─┐
@@ -31,10 +29,6 @@
 └─┘└─┘└─┘
 -->
 <style>
-  section {
-    margin: 1rem 0 2rem;
-  }
-
   input {
     height: 4rem;
     border: 0.2rem solid var(--color-text);
@@ -44,7 +38,8 @@
   }
 
   label {
-    margin-bottom: 0.4rem;
+    margin: 1rem 0 2rem;
+    flex-grow: 1;
     display: block;
   }
 </style>

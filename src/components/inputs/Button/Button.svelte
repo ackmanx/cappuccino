@@ -26,6 +26,9 @@
 -->
 <style>
   button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     color: var(--color-button-background);
     background-color: var(--color-accent);
     border-radius: 8px;

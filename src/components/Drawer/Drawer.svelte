@@ -62,6 +62,7 @@
     height: 100vh;
     width: 360px;
     z-index: 4;
+    overflow: auto;
   }
 
   .button-container {
