@@ -58,17 +58,8 @@
     border-radius: 10px;
   }
 
-  a {
-    width: 100%;
-    padding: 8px;
-    display: inline-block;
-    font-size: 16px;
-  }
-
-  a:hover {
-    background-color: var(--color-main-background);
-    border-top-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+  ul {
+    margin: 0;
   }
 
   .header {
