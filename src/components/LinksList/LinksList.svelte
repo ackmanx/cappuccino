@@ -4,6 +4,8 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
+  import { onMount } from 'svelte'
+
   import { getLayerConfig } from '../../context'
   import EditIcon from '../../svgs/EditIcon.svelte'
   import type { TabType } from '../../types'
@@ -17,6 +19,11 @@
   function openGridDrawer() {
     $layerConfig = { activate: true, type: 'drawer', subtype: 'grid' }
   }
+  onMount(() =>
+    console.log(
+      getComputedStyle(document.documentElement).getPropertyValue('--color-card-background')
+    )
+  )
 </script>
 
 <!--
@@ -28,7 +35,12 @@
   {#if tabs.length}
     {#each tabs[selectedTabIndex].links as link}
       <li>
-        <Link href={link.url}>
+        <Link
+          --color-main-background={getComputedStyle(document.documentElement).getPropertyValue(
+            '--color-card-background'
+          )}
+          href={link.url}
+        >
           {link.label}
         </Link>
       </li>

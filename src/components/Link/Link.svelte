@@ -7,16 +7,23 @@
 
 <style>
   a {
-    display: inline-flex;
+    display: flex;
     flex-direction: column;
     padding: 1rem 0;
+    border-radius: 0.3rem;
+  }
+
+  a {
+    width: 100%;
+    padding: 8px;
+    font-size: 1.6rem;
+  }
+
+  a:hover {
+    background-color: var(--color-main-background);
   }
 
   span {
     border-top: 0.2rem solid transparent;
-  }
-
-  a:hover span {
-    border-top: 0.2rem solid var(--color-accent);
   }
 </style>
