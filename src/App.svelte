@@ -32,8 +32,6 @@
     if (appContent) {
       $tabs = JSON.parse(appContent)
     }
-
-    /* prettier-ignore */ console.log('^_^', 'mounted', $tabs)
   })
 
   function handleChangeTab(tabIndex: number) {
@@ -50,18 +48,20 @@
       card,
       ...$tabs[selectedTabIndex].cards.slice(selectedCardIndex + 1),
     ]
-    console.log('cardupdate', cardsUpdate)
+
     const tabUpdate = {
       ...$tabs[selectedTabIndex],
       cards: [...cardsUpdate],
     }
+
     const newAppState = [
       ...$tabs.slice(0, selectedTabIndex),
       tabUpdate,
       ...$tabs.slice(selectedTabIndex + 1),
     ]
-    console.log(newAppState)
+
     $tabs = newAppState
+
     localStorage.setItem('appContent', JSON.stringify(newAppState))
   }
 
