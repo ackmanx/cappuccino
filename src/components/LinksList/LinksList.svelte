@@ -25,20 +25,18 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <ul>
-  {#if tabs.length}
-    {#each tabs[selectedTabIndex].links as link}
-      <li>
-        <Link
-          --color-main-background={getComputedStyle(document.documentElement).getPropertyValue(
-            '--color-card-background'
-          )}
-          href={link.url}
-        >
-          {link.label}
-        </Link>
-      </li>
-    {/each}
-  {/if}
+  {#each tabs[selectedTabIndex].links as link}
+    <li>
+      <Link
+        --color-main-background={getComputedStyle(document.documentElement).getPropertyValue(
+          '--color-card-background'
+        )}
+        href={link.url}
+      >
+        {link.label}
+      </Link>
+    </li>
+  {/each}
   <li class="edit">
     <Button --color-accent="transparent" onClick={openGridDrawer}>
       <EditIcon />

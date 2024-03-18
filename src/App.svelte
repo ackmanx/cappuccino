@@ -83,8 +83,10 @@
     onChangeTab={handleChangeTab}
     onEditTabs={handleEditTabs}
   />
-  <LinksList tabs={$tabs} {selectedTabIndex} />
-  <CardsList cards={$tabs[selectedTabIndex]?.cards} onChangeSelectedCard={handleChangeCard} />
+  {#if $tabs.length}
+    <LinksList tabs={$tabs} {selectedTabIndex} />
+    <CardsList cards={$tabs[selectedTabIndex]?.cards} onChangeSelectedCard={handleChangeCard} />
+  {/if}
 </main>
 
 <Drawer>
