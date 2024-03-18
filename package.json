@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "start": "vite dev",
     "build": "tsc --noEmit && vite build",
     "build:watch": "vite build --watch",
     "prep": "bash chrome-store/prep-for-chrome-store.sh",
