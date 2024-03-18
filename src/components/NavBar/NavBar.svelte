@@ -60,7 +60,6 @@
     border: none;
     cursor: pointer;
     font-size: 1.6rem;
-    font-family: inherit;
     padding: 1rem 2rem;
     border-bottom: 2px solid transparent;
   }
