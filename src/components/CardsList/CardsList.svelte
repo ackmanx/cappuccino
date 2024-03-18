@@ -16,13 +16,13 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<section class="cards-list masonry">
+<component class="cards-list masonry">
   {#if cards.length}
     {#each cards as card, index}
       <Card {card} cardIndex={index} {onChangeSelectedCard} />
     {/each}
   {/if}
-</section>
+</component>
 
 <!--
 ┌─┐┌─┐┌─┐
@@ -30,7 +30,7 @@
 └─┘└─┘└─┘
 -->
 <style>
-  section {
+  component {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: masonry;

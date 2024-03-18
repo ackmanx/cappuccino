@@ -35,7 +35,7 @@
   }
 </script>
 
-<section>
+<component>
   <ul
     data-test-id={`draggable-list__${key}`}
     on:mouseover={handleMouseOver}
@@ -56,10 +56,10 @@
       <Button onClick={handleCancel}>cancel</Button>
     </div>
   {/if}
-</section>
+</component>
 
 <style>
-  section {
+  component {
     padding-bottom: 2rem;
   }
 

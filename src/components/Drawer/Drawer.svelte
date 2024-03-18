@@ -34,7 +34,7 @@
 <svelte:window on:keydown={onEsc} />
 
 {#if $layerConfig.activate}
-  <section
+  <component
     inert={!$layerConfig.activate}
     role="dialog"
     transition:customSlide={{ duration: 250 }}
@@ -44,7 +44,7 @@
     <div class="dialog-inner">
       <slot />
     </div>
-  </section>
+  </component>
   <div
     role="dialog"
     transition:fade={{ duration: 250 }}
@@ -87,7 +87,7 @@
     color: var(--text);
   }
 
-  section {
+  component {
     padding: 1rem;
   }
 

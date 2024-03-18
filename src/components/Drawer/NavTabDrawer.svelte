@@ -15,7 +15,7 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<section>
+<component>
   <h1>Edit Tabs</h1>
 
   <TextField label="Something" value="hello world" onChange={() => {}} />
@@ -23,7 +23,7 @@
   <Button onClick={onClose}>
     <span class="material-symbols-outlined"> close </span>
   </Button>
-</section>
+</component>
 
 <!--
 ┌─┐┌─┐┌─┐
@@ -31,7 +31,7 @@
 └─┘└─┘└─┘
 -->
 <style>
-  section {
+  component {
     display: flex;
     justify-content: space-between;
     align-items: center;

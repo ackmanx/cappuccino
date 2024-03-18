@@ -22,7 +22,7 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<section>
+<component>
   <div class="header">
     <h2>{card.title}</h2>
     <Button
@@ -44,7 +44,7 @@
       </li>
     {/each}
   </ul>
-</section>
+</component>
 
 <!--
 ┌─┐┌─┐┌─┐
@@ -52,7 +52,7 @@
 └─┘└─┘└─┘
 -->
 <style>
-  section {
+  component {
     background-color: var(--color-card-background);
     padding: 16px;
     border-radius: 10px;

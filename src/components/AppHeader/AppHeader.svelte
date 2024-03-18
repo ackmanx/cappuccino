@@ -23,11 +23,11 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<section>
+<component>
   <img src="logo.svg" alt="cappuccino logo" />
   <input use:init />
   <Button onClick={openSettingsDrawer} --color-accent="transparent"><SettingsIcon /></Button>
-</section>
+</component>
 
 <!--
 ┌─┐┌─┐┌─┐
@@ -35,7 +35,7 @@
 └─┘└─┘└─┘
 -->
 <style>
-  section {
+  component {
     display: flex;
     gap: 10px;
     justify-content: center;
