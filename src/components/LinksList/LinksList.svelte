@@ -58,6 +58,7 @@
     align-items: center;
     padding: 16px;
   }
+
   .edit {
     margin-left: auto;
   }

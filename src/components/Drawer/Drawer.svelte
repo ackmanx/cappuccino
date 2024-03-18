@@ -41,7 +41,7 @@
     class="drawer"
   >
     <div class="button-container"><button use:init on:click={onClickHandler}>&times;</button></div>
-    <div class="dialog-inner">
+    <div>
       <slot />
     </div>
   </component>
