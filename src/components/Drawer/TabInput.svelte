@@ -12,5 +12,4 @@
   onChange={(event) => onUpdateTab(event, index)}
   name="title"
   type="text"
-  label="title"
 />

@@ -6,7 +6,7 @@
 <script lang="ts">
   import type { ChangeEvent } from '../../../types'
 
-  export let label: string
+  export let label: string | undefined = ''
   export let value: string | undefined
   export let onChange: (event: ChangeEvent) => void
   export let name: string
@@ -38,7 +38,6 @@
   }
 
   label {
-    margin: 1rem 0 2rem;
     flex-grow: 1;
     display: block;
   }
