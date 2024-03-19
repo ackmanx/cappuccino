@@ -5,6 +5,7 @@
     --color-button-background: #213547;
     --color-card-background: #ececec;
     --color-accent: #ce7432;
+    --color-overlay: #213547;
   }
 }
 
@@ -15,5 +16,6 @@
     --color-button-background: rgba(255, 255, 255, 0.87);
     --color-card-background: #3c3c3c;
     --color-accent: #ce7432;
+    --color-overlay: #3c3c3cde;
   }
 }

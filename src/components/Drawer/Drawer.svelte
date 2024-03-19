@@ -73,7 +73,7 @@
   .overlay {
     position: absolute;
     inset: 0 0 0 0;
-    background-color: var(--color-text);
+    background-color: var(--color-overlay);
     z-index: 3;
     opacity: 0.6;
   }
