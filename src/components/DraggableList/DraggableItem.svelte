@@ -95,6 +95,7 @@
     border: 0;
     background: transparent;
     cursor: grab;
+    margin-top: 6px;
   }
 
   .list-item {

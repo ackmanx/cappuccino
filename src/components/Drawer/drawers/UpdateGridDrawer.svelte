@@ -61,8 +61,8 @@
   {/each}
 </DraggableList>
 <DraggableList key="cardOrder" onNew={handleNewCard} onSave={handleSaveAll}>
-  <h2>Change Card Grid</h2>
   <p>Update grid order or card titles</p>
+
   {#each tempTab.cards as card, index}
     <DraggableItem
       key="cardOrder"

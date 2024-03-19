@@ -104,13 +104,12 @@
     background: transparent;
     border: 0;
     font-size: 4rem;
-    width: 6rem;
     color: var(--text);
     font-weight: lighter;
   }
 
   component {
-    padding: 1rem;
+    padding: 1rem 2rem;
   }
 
   :global(body:has(.overlay)) {
