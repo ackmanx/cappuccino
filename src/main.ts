@@ -1,3 +1,5 @@
+import '@fontsource-variable/inter'
+
 import App from './App.svelte'
 import './global.css'
 import './variables.css'

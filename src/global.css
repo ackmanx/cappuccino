@@ -17,6 +17,7 @@ body {
 
 body * {
   box-sizing: border-box;
+  font-family: 'Inter Variable', sans-serif;
 }
 
 h1,
