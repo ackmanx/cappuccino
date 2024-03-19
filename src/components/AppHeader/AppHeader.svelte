@@ -9,9 +9,6 @@
   import Button from '../inputs/Button/Button.svelte'
 
   const layerConfig = getLayerConfig()
-  function init(node: HTMLElement) {
-    node.focus()
-  }
 
   function openSettingsDrawer() {
     $layerConfig = { activate: true, type: 'drawer', subtype: 'setting' }
@@ -25,7 +22,7 @@
 -->
 <component>
   <img src="logo.svg" alt="cappuccino logo" />
-  <input use:init />
+  <input />
   <Button onClick={openSettingsDrawer} --color-accent="transparent"><SettingsIcon /></Button>
 </component>
 
