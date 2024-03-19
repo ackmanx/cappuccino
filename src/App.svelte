@@ -89,20 +89,25 @@
   {/if}
 </main>
 
-<Drawer>
-  {#if $layerConfig.subtype === 'grid'}
+{#if $layerConfig.subtype === 'grid'}
+  <Drawer title="Update Tab">
     <UpdateGridDrawer {tabs} {selectedTabIndex} />
-  {:else if $layerConfig.subtype === 'tab'}
+  </Drawer>
+{:else if $layerConfig.subtype === 'tab'}
+  <Drawer title="Manage Tabs">
     <ManageTabsDrawer {tabs} />
-  {:else if $layerConfig.subtype === 'card'}
+  </Drawer>
+{:else if $layerConfig.subtype === 'card'}
+  <Drawer title="Update Card">
     <UpdateCardDrawer
       card={$tabs[selectedTabIndex].cards[selectedCardIndex]}
       onSave={handleSaveCard}
     />
-  {:else if $layerConfig.subtype === 'setting'}
+  </Drawer>{:else if $layerConfig.subtype === 'setting'}
+  <Drawer title="Settings">
     <SettingsDrawer />
-  {/if}
-</Drawer>
+  </Drawer>
+{/if}
 
 <!--
 ┌─┐┌─┐┌─┐

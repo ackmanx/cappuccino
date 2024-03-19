@@ -32,7 +32,6 @@
   }
 </script>
 
-<h2>Update Tabs</h2>
 <DraggableList onSave={handleTabSave} onNew={handleNewTab} key="tabLinks">
   {#each tempTabs as tab, index}
     <DraggableItem

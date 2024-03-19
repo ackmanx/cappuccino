@@ -3,6 +3,8 @@
 
   import { getLayerConfig } from '../../context'
 
+  export let title: String
+
   const layerConfig = getLayerConfig()
 
   const onEsc = (event: KeyboardEvent) => {
@@ -45,7 +47,8 @@
     transition:customSlide={{ duration: 250 }}
     class="drawer"
   >
-    <div class="button-container">
+    <div class="header">
+      <h1>{title}</h1>
       <button use:init on:click={onClickHandler}>&times;</button>
     </div>
     <div>
@@ -78,9 +81,15 @@
     overflow: auto;
   }
 
-  .button-container {
+  .header {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    font-weight: normal;
   }
 
   .overlay {
@@ -98,6 +107,7 @@
     width: 6rem;
     padding: 0 1rem;
     color: var(--text);
+    font-weight: normal;
   }
 
   component {

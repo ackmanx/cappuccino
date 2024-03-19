@@ -46,7 +46,6 @@
   }
 </script>
 
-<h2>Update Tab</h2>
 <p>Update tab links, their order or content</p>
 <DraggableList key="tabLinks" onNew={handleNewLink}>
   {#each tempTab?.links as link, index}

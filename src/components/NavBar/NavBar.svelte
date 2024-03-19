@@ -70,7 +70,7 @@
   }
 
   button.active {
-    background-color: black;
+    background-color: #ce7432;
     color: white;
   }
 </style>
