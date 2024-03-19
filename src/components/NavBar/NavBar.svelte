@@ -31,7 +31,7 @@
   </ul>
 
   <Button --color-accent="transparent" onClick={onEditTabs}>
-    <EditIcon /> edit tabs
+    <EditIcon />
   </Button>
 </nav>
 
