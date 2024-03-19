@@ -52,6 +52,7 @@
       <slot />
     </div>
   </component>
+
   <div
     role="dialog"
     transition:fade={{ duration: 250 }}
