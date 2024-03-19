@@ -105,9 +105,8 @@
     border: 0;
     font-size: 4rem;
     width: 6rem;
-    padding: 0 1rem;
     color: var(--text);
-    font-weight: normal;
+    font-weight: lighter;
   }
 
   component {
