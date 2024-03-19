@@ -2,6 +2,7 @@
   :root {
     --color-main-background: #ffffff;
     --color-text: #213547;
+    --color-button-primary-text: #ffffff;
     --color-button-background: #213547;
     --color-card-background: #ececec;
     --color-accent: #ce7432;
@@ -13,6 +14,7 @@
   :root {
     --color-main-background: #242424;
     --color-text: rgba(255, 255, 255, 0.87);
+    --color-button-primary-text: #ffffff;
     --color-button-background: rgba(255, 255, 255, 0.87);
     --color-card-background: #3c3c3c;
     --color-accent: #ce7432;

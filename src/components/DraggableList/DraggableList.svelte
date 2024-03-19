@@ -53,7 +53,7 @@
   {#if onSave}
     <div class="button-container">
       <Button onClick={handleSave}>save</Button>
-      <Button onClick={handleCancel}>cancel</Button>
+      <Button variant="secondary" onClick={handleCancel}>cancel</Button>
     </div>
   {/if}
 </component>
@@ -65,8 +65,9 @@
 
   .button-container {
     display: flex;
+    justify-content: flex-end;
     font-size: 1.6rem;
-    gap: 1.6rem;
+    gap: 1rem;
     padding: 1rem 0 0;
   }
   ul {
