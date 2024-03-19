@@ -49,7 +49,7 @@
   ul {
     display: flex;
     align-items: center;
-    gap: 2.4rem 0;
+    gap: 2.4rem 0.5rem;
     margin: 0;
     padding-right: 1rem;
   }
@@ -61,7 +61,8 @@
     cursor: pointer;
     font-size: 1.6rem;
     padding: 1rem 2rem;
-    border-bottom: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.25s;
   }
 
   button:hover {
@@ -69,6 +70,7 @@
   }
 
   button.active {
-    border-bottom: 2px solid var(--color-text);
+    background-color: black;
+    color: white;
   }
 </style>
