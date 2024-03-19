@@ -45,7 +45,9 @@
     transition:customSlide={{ duration: 250 }}
     class="drawer"
   >
-    <div class="button-container"><button use:init on:click={onClickHandler}>&times;</button></div>
+    <div class="button-container">
+      <button use:init on:click={onClickHandler}>&times;</button>
+    </div>
     <div>
       <slot />
     </div>
