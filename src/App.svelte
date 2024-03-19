@@ -10,10 +10,10 @@
   import AppHeader from './components/AppHeader/AppHeader.svelte'
   import CardsList from './components/CardsList/CardsList.svelte'
   import Drawer from './components/Drawer/Drawer.svelte'
-  import SettingsDrawer from './components/Drawer/SettingsDrawer.svelte'
-  import UpdateCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
-  import UpdateGridDrawer from './components/Drawer/UpdateGridDrawer.svelte'
-  import UpdateTabDrawer from './components/Drawer/UpdateTabDrawer.svelte'
+  import ManageTabsDrawer from './components/Drawer/drawers/ManageTabsDrawer.svelte'
+  import SettingsDrawer from './components/Drawer/drawers/SettingsDrawer.svelte'
+  import UpdateCardDrawer from './components/Drawer/drawers/UpdateCardDrawer.svelte'
+  import UpdateGridDrawer from './components/Drawer/drawers/UpdateGridDrawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'
   import NavBar from './components/NavBar/NavBar.svelte'
   import { getLayerConfig, setLayerConfig } from './context'
@@ -93,7 +93,7 @@
   {#if $layerConfig.subtype === 'grid'}
     <UpdateGridDrawer {tabs} {selectedTabIndex} />
   {:else if $layerConfig.subtype === 'tab'}
-    <UpdateTabDrawer {tabs} />
+    <ManageTabsDrawer {tabs} />
   {:else if $layerConfig.subtype === 'card'}
     <UpdateCardDrawer
       card={$tabs[selectedTabIndex].cards[selectedCardIndex]}

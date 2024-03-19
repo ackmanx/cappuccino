@@ -6,12 +6,12 @@
 <script lang="ts">
   import { onMount } from 'svelte'
 
-  import { getLayerConfig } from '../../context'
-  import type { CardType, ChangeEvent, LinkType } from '../../types'
-  import DraggableItem from '../DraggableList/DraggableItem.svelte'
-  import DraggableList from '../DraggableList/DraggableList.svelte'
-  import TextField from '../inputs/TextField/TextField.svelte'
-  import LinkInput from './LinkInput.svelte'
+  import { getLayerConfig } from '../../../context'
+  import type { CardType, ChangeEvent, LinkType } from '../../../types'
+  import DraggableItem from '../../DraggableList/DraggableItem.svelte'
+  import DraggableList from '../../DraggableList/DraggableList.svelte'
+  import TextField from '../../inputs/TextField/TextField.svelte'
+  import LinkInput from '../LinkInput.svelte'
 
   // Props
   export let card: CardType

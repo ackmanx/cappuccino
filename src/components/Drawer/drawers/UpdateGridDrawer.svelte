@@ -1,11 +1,11 @@
 <script lang="ts">
   import type { Writable } from 'svelte/store'
 
-  import type { CardType, ChangeEvent, LinkType, TabType } from '../../types'
-  import DraggableItem from '../DraggableList/DraggableItem.svelte'
-  import DraggableList from '../DraggableList/DraggableList.svelte'
-  import CardInput from './CardInput.svelte'
-  import LinkInput from './LinkInput.svelte'
+  import type { CardType, ChangeEvent, LinkType, TabType } from '../../../types'
+  import DraggableItem from '../../DraggableList/DraggableItem.svelte'
+  import DraggableList from '../../DraggableList/DraggableList.svelte'
+  import CardInput from '../CardInput.svelte'
+  import LinkInput from '../LinkInput.svelte'
 
   //props
   export let tabs: Writable<TabType[]>
