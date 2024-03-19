@@ -31,6 +31,11 @@
   }
 </script>
 
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
 <svelte:window on:keydown={onEsc} />
 
 {#if $layerConfig.activate}
@@ -53,6 +58,11 @@
   />
 {/if}
 
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
 <style>
   .drawer {
     position: absolute;
@@ -60,7 +70,7 @@
     right: 0;
     background-color: var(--color-main-background);
     height: 100vh;
-    width: 360px;
+    width: 500px;
     z-index: 4;
     overflow: auto;
   }
