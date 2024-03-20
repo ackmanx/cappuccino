@@ -76,7 +76,7 @@
     right: 0;
     background-color: var(--color-main-background);
     height: 100vh;
-    width: 500px;
+    width: 400px;
     z-index: 4;
     overflow: auto;
   }
@@ -85,6 +85,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 1rem;
   }
 
   h1 {
