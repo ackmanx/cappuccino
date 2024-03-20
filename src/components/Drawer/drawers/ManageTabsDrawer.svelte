@@ -77,6 +77,6 @@
     justify-content: flex-end;
     font-size: 1.6rem;
     gap: 1rem;
-    padding: 1rem 0 0;
+    margin-top: 2rem;
   }
 </style>
