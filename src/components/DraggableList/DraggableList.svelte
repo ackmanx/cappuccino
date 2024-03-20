@@ -35,6 +35,11 @@
   }
 </script>
 
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
 <component>
   <ul
     data-test-id={`draggable-list__${key}`}
@@ -58,6 +63,11 @@
   {/if}
 </component>
 
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
 <style>
   component {
     padding-bottom: 2rem;
@@ -70,7 +80,11 @@
     gap: 1rem;
     padding: 1rem 0 0;
   }
+
   ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     padding: 0;
     margin: 0;
   }
