@@ -56,6 +56,7 @@
       <Button onClick={onNew}>new</Button>
     </div>
   {/if}
+
   {#if onSave}
     <div class="button-container">
       <Button onClick={handleSave}>save</Button>
