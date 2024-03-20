@@ -50,6 +50,7 @@
   >
     <slot />
   </ul>
+
   {#if onNew}
     <div>
       <Button onClick={onNew}>new</Button>
