@@ -60,10 +60,6 @@
     {/each}
   </DraggableList>
 
-  <div>
-    <Button onClick={handleNewTab}>new</Button>
-  </div>
-
   <div class="button-container">
     <Button onClick={handleTabSave}>save</Button>
     <Button variant="secondary" onClick={handleCancel}>cancel</Button>
