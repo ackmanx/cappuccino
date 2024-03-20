@@ -7,6 +7,12 @@
   export let onUpdateCard: (event: ChangeEvent, index: number) => void
 </script>
 
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
+
 <div>
   <TextField
     value={element.title}
@@ -17,6 +23,11 @@
   />
 </div>
 
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
 <style>
   div {
     flex-grow: 1;

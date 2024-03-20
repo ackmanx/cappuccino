@@ -7,6 +7,11 @@
   export let onUpdateLink: (name: ChangeEvent, index: number) => void
 </script>
 
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
 <div>
   <TextField
     value={element.label}

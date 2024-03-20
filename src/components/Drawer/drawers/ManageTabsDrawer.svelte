@@ -32,6 +32,11 @@
   }
 </script>
 
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
 <DraggableList onSave={handleTabSave} onNew={handleNewTab} key="tabLinks">
   {#each tempTabs as tab, index}
     <DraggableItem

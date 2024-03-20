@@ -7,6 +7,11 @@
   export let onUpdateTab: (name: ChangeEvent, index: number) => void
 </script>
 
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
 <TextField
   value={element.title}
   onChange={(event) => onUpdateTab(event, index)}

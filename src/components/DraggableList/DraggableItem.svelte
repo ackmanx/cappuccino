@@ -61,6 +61,12 @@
   }
 </script>
 
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
+
 <li
   class="list-item"
   class:dragged-list-item={$draggableList?.draggedOver === index}
@@ -87,6 +93,11 @@
   </button>
 </li>
 
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
 <style>
   .drag-button {
     height: 4rem;
