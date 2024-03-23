@@ -6,6 +6,7 @@
   import DraggableItem from '../../DraggableList/DraggableItem.svelte'
   import DraggableList from '../../DraggableList/DraggableList.svelte'
   import Button from '../../inputs/Button/Button.svelte'
+  import TextField from '../../inputs/TextField/TextField.svelte'
   import TabInput from '../TabInput.svelte'
 
   export let tabs: Writable<TabType[]>
@@ -59,6 +60,8 @@
       </DraggableItem>
     {/each}
   </DraggableList>
+
+  <TextField isPlaceholderInput placeholder="new tab name" onChange={(event) => {}} />
 
   <div class="button-container">
     <Button onClick={handleTabSave}>save</Button>

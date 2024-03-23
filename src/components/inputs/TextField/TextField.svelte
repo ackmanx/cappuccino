@@ -7,10 +7,10 @@
   import type { ChangeEvent } from '../../../types'
 
   export let label: string | undefined = ''
-  export let value: string | undefined
+  export let value: string | undefined = ''
+  export let placeholder: string | undefined = ''
   export let onChange: (event: ChangeEvent) => void
-  export let name: string
-  export let type: 'text' | 'number'
+  export let isPlaceholderInput: boolean
 </script>
 
 <!--
@@ -18,9 +18,9 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<label
+<label class:isPlaceholderInput
   >{label}
-  <input {name} {type} {value} on:change={onChange} />
+  <input class:isPlaceholderInput {value} {placeholder} type="text" on:change={onChange} />
 </label>
 
 <!--
@@ -40,5 +40,16 @@
   label {
     flex-grow: 1;
     display: block;
+  }
+
+  label.isPlaceholderInput {
+    display: flex;
+    justify-content: right;
+  }
+
+  input.isPlaceholderInput {
+    width: calc(100% - 60px - 19px);
+    margin-right: 21px;
+    margin-top: 1rem;
   }
 </style>
