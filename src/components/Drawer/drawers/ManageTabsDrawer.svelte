@@ -11,7 +11,10 @@
 
   export let tabs: Writable<TabType[]>
   export let isDragEnabled = false
-  let tempTabs = structuredClone($tabs)
+
+  $: tempTabs = structuredClone($tabs)
+  let shouldTakeFocusIndex: number | undefined
+
   const layerConfig = getLayerConfig()
 
   function handleArrayUpdate(tabs: TabType[]) {
@@ -32,8 +35,19 @@
     tempTabs[index][event.currentTarget.name] = event.currentTarget.value
   }
 
-  function handleNewTab() {
-    tempTabs = [...tempTabs, { title: '', cards: [], links: [] }]
+  /*
+   * Really this only happens once because after the first input we create a new entry and reset this
+   */
+  function handlePlaceholderInput(event: InputEvent) {
+    const input = event.target as HTMLInputElement
+    const firstLetterOfInput = input.value
+
+    tempTabs.push({ title: '', cards: [], links: [] })
+    tempTabs[tempTabs.length - 1].title = firstLetterOfInput
+
+    input.value = ''
+
+    shouldTakeFocusIndex = tempTabs.length - 1
   }
 
   function handleCancel() {
@@ -56,12 +70,17 @@
         dataArray={$tabs}
         {index}
       >
-        <TabInput onUpdateTab={handleUpdate} element={tab} {index} />
+        <TabInput
+          onUpdateTab={handleUpdate}
+          element={tab}
+          {index}
+          shouldTakeFocus={shouldTakeFocusIndex === index}
+        />
       </DraggableItem>
     {/each}
   </DraggableList>
 
-  <TextField isPlaceholderInput placeholder="new tab name" onChange={(event) => {}} />
+  <TextField isPlaceholderInput placeholder="new tab name" onInput={handlePlaceholderInput} />
 
   <div class="button-container">
     <Button onClick={handleTabSave}>save</Button>

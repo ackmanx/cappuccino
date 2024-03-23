@@ -27,10 +27,6 @@
       },
     }
   }
-
-  function init(node: HTMLElement) {
-    node.focus()
-  }
 </script>
 
 <!--
@@ -49,7 +45,7 @@
   >
     <div class="header">
       <h1>{title}</h1>
-      <button use:init on:click={onClickHandler}>&times;</button>
+      <button on:click={onClickHandler}>&times;</button>
     </div>
     <div>
       <slot />

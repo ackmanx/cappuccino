@@ -8,9 +8,18 @@
 
   export let label: string | undefined = ''
   export let value: string | undefined = ''
+  export let name: string | undefined = ''
   export let placeholder: string | undefined = ''
-  export let onChange: (event: ChangeEvent) => void
-  export let isPlaceholderInput: boolean
+  export let isPlaceholderInput: boolean | undefined
+  export let shouldTakeFocus: boolean | undefined
+  export let onChange: (event: ChangeEvent) => void | undefined = () => {}
+  export let onInput: (event: InputEvent) => void | undefined = () => {}
+
+  function shouldSetFocus(node: HTMLElement) {
+    if (shouldTakeFocus) {
+      node.focus()
+    }
+  }
 </script>
 
 <!--
@@ -20,7 +29,16 @@
 -->
 <label class:isPlaceholderInput
   >{label}
-  <input class:isPlaceholderInput {value} {placeholder} type="text" on:change={onChange} />
+  <input
+    class:isPlaceholderInput
+    {name}
+    {value}
+    {placeholder}
+    type="text"
+    on:change={onChange}
+    on:input={onInput}
+    use:shouldSetFocus
+  />
 </label>
 
 <!--
