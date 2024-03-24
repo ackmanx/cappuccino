@@ -28,12 +28,6 @@
       card = { title: 'new card', links: [] }
     }
   })
-  function handleAddNewLink() {
-    tempCard = {
-      ...tempCard,
-      links: [...tempCard.links, { url: 'https://', label: '' }],
-    }
-  }
 
   function handleUpdateLinks(event: ChangeEvent, linkIndex: number) {
     const newLinkArray = [...tempCard.links].map((link, index) =>
