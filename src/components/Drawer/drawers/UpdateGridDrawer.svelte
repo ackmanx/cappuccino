@@ -60,6 +60,7 @@
 
     shouldTakeFocusIndex = tempTab.links.length - 1
   }
+
   function handlePlaceholderInputForCards(event: InputEvent) {
     const input = event.target as HTMLInputElement
     const firstLetterOfInput = input.value
