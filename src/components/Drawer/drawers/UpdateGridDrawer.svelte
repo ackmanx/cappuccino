@@ -49,7 +49,7 @@
   /*
    * Really this only happens once because after the first input we create a new entry and reset this
    */
-  function handlePlaceholderInput(event: InputEvent) {
+  function handlePlaceholderInputForLinks(event: InputEvent) {
     const input = event.target as HTMLInputElement
     const firstLetterOfInput = input.value
 
@@ -60,13 +60,16 @@
 
     shouldTakeFocusIndex = tempTab.links.length - 1
   }
+  function handlePlaceholderInputForCards(event: InputEvent) {
+    const input = event.target as HTMLInputElement
+    const firstLetterOfInput = input.value
 
-  function handleNewLink() {
-    tempTab.links = [...tempTab.links, { url: '', label: '' }]
-  }
-
-  function handleNewCard() {
     tempTab.cards = [...tempTab.cards, { title: '', links: [] }]
+    tempTab.cards[tempTab.cards.length - 1].title = firstLetterOfInput
+
+    input.value = ''
+
+    shouldTakeFocusIndex = tempTab.cards.length - 1
   }
 
   function handleCancel() {
@@ -100,7 +103,11 @@
     {/each}
   </DraggableList>
 
-  <TextField isPlaceholderInput placeholder="new link name" onInput={handlePlaceholderInput} />
+  <TextField
+    isPlaceholderInput
+    placeholder="new link name"
+    onInput={handlePlaceholderInputForLinks}
+  />
 
   <DraggableList key="cardOrder">
     <p>Update grid order or card titles</p>
@@ -113,12 +120,21 @@
         dataArray={tempTab.cards}
         {index}
       >
-        <CardInput element={card} onUpdateCard={handleUpdateCard} {index} />
+        <CardInput
+          element={card}
+          shouldTakeFocus={shouldTakeFocusIndex === index}
+          onUpdateCard={handleUpdateCard}
+          {index}
+        />
       </DraggableItem>
     {/each}
   </DraggableList>
 
-  <TextField isPlaceholderInput placeholder="new card name" onInput={handlePlaceholderInput} />
+  <TextField
+    isPlaceholderInput
+    placeholder="new card name"
+    onInput={handlePlaceholderInputForCards}
+  />
 
   <div class="button-container">
     <Button onClick={handleSaveAll}>save</Button>
