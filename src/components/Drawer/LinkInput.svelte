@@ -4,6 +4,7 @@
 
   export let element
   export let index: number
+  export let shouldTakeFocus: boolean
   export let onUpdateLink: (name: ChangeEvent, index: number) => void
 </script>
 
@@ -17,8 +18,8 @@
     value={element.label}
     onChange={(event) => onUpdateLink(event, index)}
     name="label"
-    type="text"
     label="label"
+    {shouldTakeFocus}
   />
 </div>
 <div>
@@ -26,7 +27,6 @@
     value={element.url}
     onChange={(event) => onUpdateLink(event, index)}
     name="url"
-    type="text"
     label="url"
   />
 </div>
