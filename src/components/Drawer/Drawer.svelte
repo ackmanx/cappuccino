@@ -27,10 +27,6 @@
       },
     }
   }
-
-  function init(node: HTMLElement) {
-    node.focus()
-  }
 </script>
 
 <!--
@@ -49,13 +45,15 @@
   >
     <div class="header">
       <h1>{title}</h1>
-      <button use:init on:click={onClickHandler}>&times;</button>
+      <button on:click={onClickHandler}>&times;</button>
     </div>
     <div>
       <slot />
     </div>
   </component>
 
+  <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div
     role="dialog"
     transition:fade={{ duration: 250 }}
@@ -85,7 +83,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 2rem;
   }
 
   h1 {

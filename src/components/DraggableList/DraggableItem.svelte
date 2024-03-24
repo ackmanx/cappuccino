@@ -4,6 +4,8 @@
   import RemoveIcon from '../../svgs/RemoveIcon.svelte'
   import Button from '../inputs/Button/Button.svelte'
 
+  type T = $$Generic
+
   export let key: string
   export let dataArray: T[]
   export let index: number
