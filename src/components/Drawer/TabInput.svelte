@@ -5,7 +5,6 @@
   export let element
   export let index: number
   export let onUpdateTab: (name: ChangeEvent, index: number) => void
-  console.log('LinkInput', element)
 </script>
 
 <TextField

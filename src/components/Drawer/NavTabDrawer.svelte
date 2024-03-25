@@ -18,7 +18,7 @@
 <section>
   <h1>Edit Tabs</h1>
 
-  <TextField label="Something" value="hello world" onChange={() => {}} />
+  <TextField name="wee" type="text" label="Something" value="hello world" onChange={() => {}} />
 
   <Button onClick={onClose}>
     <span class="material-symbols-outlined"> close </span>

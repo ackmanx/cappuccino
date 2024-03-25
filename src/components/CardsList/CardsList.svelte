@@ -17,7 +17,7 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <section class="cards-list masonry">
-  {#if cards.length}
+  {#if cards?.length}
     {#each cards as card, index}
       <Card {card} cardIndex={index} {onChangeSelectedCard} />
     {/each}

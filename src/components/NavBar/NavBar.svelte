@@ -6,7 +6,7 @@
 <script lang="ts">
   import EditIcon from '../../svgs/EditIcon.svelte'
   import type { TabType } from '../../types'
-  import Button from '../inputs/Button/Button.svelte'
+  import EditButton from '../inputs/EditButton/EditButton.svelte'
 
   export let tabs: TabType[] = []
   export let selectedTabIndex: number = 0
@@ -30,9 +30,9 @@
     {/each}
   </ul>
 
-  <Button --color-accent="transparent" onClick={onEditTabs}>
+  <EditButton onClick={onEditTabs}>
     <EditIcon /> edit tabs
-  </Button>
+  </EditButton>
 </nav>
 
 <!--

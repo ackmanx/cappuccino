@@ -16,16 +16,17 @@
   import UpdateTabDrawer from './components/Drawer/UpdateTabDrawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'
   import NavBar from './components/NavBar/NavBar.svelte'
-  import { getLayerConfig, setLayerConfig } from './context'
+  import { getLayerConfig, getSettings, setLayerConfig, setSettings } from './context'
   import type { CardType, TabType } from './types'
 
-  let tabs: Writable<TabType[]> = writable([])
-  let selectedTabIndex = 0
-  let selectedCardIndex = 0
-
   setLayerConfig()
+  setSettings()
   let layerConfig = getLayerConfig()
+  let settings = getSettings()
 
+  let tabs: Writable<TabType[]> = writable([])
+  let selectedTabIndex = $settings.defaultTab
+  let selectedCardIndex = 0
   onMount(() => {
     const appContent = localStorage.getItem('appContent') ?? '[]'
 
@@ -75,7 +76,7 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<main inert={$layerConfig.activate}>
+<main inert={$layerConfig.activate} style={`--color-accent: ${$settings.color}`}>
   <AppHeader />
   <NavBar
     tabs={$tabs}
@@ -87,7 +88,7 @@
   <CardsList cards={$tabs[selectedTabIndex]?.cards} onChangeSelectedCard={handleChangeCard} />
 </main>
 
-<Drawer>
+<Drawer --color-accent={$settings.color}>
   {#if $layerConfig.subtype === 'grid'}
     <UpdateGridDrawer {tabs} {selectedTabIndex} />
   {:else if $layerConfig.subtype === 'tab'}
@@ -98,7 +99,7 @@
       onSave={handleSaveCard}
     />
   {:else if $layerConfig.subtype === 'setting'}
-    <SettingsDrawer />
+    <SettingsDrawer {tabs} />
   {/if}
 </Drawer>
 

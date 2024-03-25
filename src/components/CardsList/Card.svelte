@@ -8,7 +8,7 @@
   import EditIcon from '../../svgs/EditIcon.svelte'
   import type { CardType } from '../../types'
   import Link from '../Link/Link.svelte'
-  import Button from '../inputs/Button/Button.svelte'
+  import EditButton from '../inputs/EditButton/EditButton.svelte'
 
   // Props
   export let card: CardType
@@ -25,15 +25,14 @@
 <section>
   <div class="header">
     <h2>{card.title}</h2>
-    <Button
-      --color-accent="transparent"
+    <EditButton
       onClick={() => {
         $layerConfig = { activate: true, type: 'drawer', subtype: 'card' }
         onChangeSelectedCard(cardIndex)
       }}
     >
       <EditIcon />
-    </Button>
+    </EditButton>
   </div>
   <ul>
     {#each card.links as { label, url }}
