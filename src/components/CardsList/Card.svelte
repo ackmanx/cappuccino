@@ -53,8 +53,8 @@
 <style>
   section {
     background-color: var(--color-card-background);
-    padding: 16px;
-    border-radius: 10px;
+    padding: 1.6rem;
+    border-radius: 1rem;
   }
 
   ul {

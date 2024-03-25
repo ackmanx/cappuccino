@@ -70,6 +70,6 @@
   }
 
   button.active {
-    border-bottom: 2px solid var(--color-text);
+    border-bottom: 0.2rem solid var(--color-text);
   }
 </style>
