@@ -17,6 +17,7 @@ body {
 
 body * {
   box-sizing: border-box;
+  font-family: 'Inter Variable', sans-serif;
 }
 
 h1,
@@ -41,4 +42,10 @@ a:hover {
 ul {
   padding: 0;
   list-style: none;
+}
+
+button {
+  cursor: pointer;
+  padding: 0;
+  border: none;
 }

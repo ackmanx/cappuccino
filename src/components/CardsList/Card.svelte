@@ -1,11 +1,6 @@
-<!--
-┌─┐┌─┐┬─┐┬┌─┐┌┬┐
-└─┐│  ├┬┘│├─┘ │
-└─┘└─┘┴└─┴┴   ┴
--->
 <script lang="ts">
   import { getLayerConfig } from '../../context'
-  import EditIcon from '../../svgs/EditIcon.svelte'
+  import EditIcon from '../../images/EditIcon.svelte'
   import type { CardType } from '../../types'
   import Link from '../Link/Link.svelte'
   import EditButton from '../inputs/EditButton/EditButton.svelte'
@@ -22,7 +17,7 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<section>
+<component>
   <div class="header">
     <h2>{card.title}</h2>
     <EditButton
@@ -43,7 +38,7 @@
       </li>
     {/each}
   </ul>
-</section>
+</component>
 
 <!--
 ┌─┐┌─┐┌─┐
@@ -51,7 +46,7 @@
 └─┘└─┘└─┘
 -->
 <style>
-  section {
+  component {
     background-color: var(--color-card-background);
     padding: 1.6rem;
     border-radius: 1rem;

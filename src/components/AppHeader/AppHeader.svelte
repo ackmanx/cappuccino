@@ -1,17 +1,9 @@
-<!--
-┌─┐┌─┐┬─┐┬┌─┐┌┬┐
-└─┐│  ├┬┘│├─┘ │
-└─┘└─┘┴└─┴┴   ┴
--->
 <script lang="ts">
   import { getLayerConfig } from '../../context'
-  import SettingsIcon from '../../svgs/SettingsIcon.svelte'
+  import SettingsIcon from '../../images/SettingsIcon.svelte'
   import Button from '../inputs/Button/Button.svelte'
 
   const layerConfig = getLayerConfig()
-  function init(node: HTMLElement) {
-    node.focus()
-  }
 
   function openSettingsDrawer() {
     $layerConfig = { activate: true, type: 'drawer', subtype: 'setting' }
@@ -23,11 +15,11 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<section>
+<component>
   <img src="logo.svg" alt="cappuccino logo" />
-  <input use:init />
+  <input />
   <Button onClick={openSettingsDrawer} --color-accent="transparent"><SettingsIcon /></Button>
-</section>
+</component>
 
 <!--
 ┌─┐┌─┐┌─┐
@@ -35,7 +27,7 @@
 └─┘└─┘└─┘
 -->
 <style>
-  section {
+  component {
     display: flex;
     gap: 10px;
     justify-content: center;

@@ -1,13 +1,6 @@
-<!--
-┌─┐┌─┐┬─┐┬┌─┐┌┬┐
-└─┐│  ├┬┘│├─┘ │
-└─┘└─┘┴└─┴┴   ┴
--->
 <script lang="ts">
-  import { onMount } from 'svelte'
-
   import { getLayerConfig } from '../../context'
-  import EditIcon from '../../svgs/EditIcon.svelte'
+  import EditIcon from '../../images/EditIcon.svelte'
   import type { TabType } from '../../types'
   import Link from '../Link/Link.svelte'
   import Button from '../inputs/Button/Button.svelte'
@@ -20,11 +13,6 @@
   function openGridDrawer() {
     $layerConfig = { activate: true, type: 'drawer', subtype: 'grid' }
   }
-  onMount(() =>
-    console.log(
-      getComputedStyle(document.documentElement).getPropertyValue('--color-card-background')
-    )
-  )
 </script>
 
 <!--
@@ -33,20 +21,18 @@
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
 <ul>
-  {#if tabs.length}
-    {#each tabs[selectedTabIndex].links as link}
-      <li>
-        <Link
-          --color-main-background={getComputedStyle(document.documentElement).getPropertyValue(
-            '--color-card-background'
-          )}
-          href={link.url}
-        >
-          {link.label}
-        </Link>
-      </li>
-    {/each}
-  {/if}
+  {#each tabs[selectedTabIndex].links as link}
+    <li>
+      <Link
+        --color-main-background={getComputedStyle(document.documentElement).getPropertyValue(
+          '--color-card-background'
+        )}
+        href={link.url}
+      >
+        {link.label}
+      </Link>
+    </li>
+  {/each}
   <li class="edit">
     <EditButton onClick={openGridDrawer}><EditIcon /></EditButton>
     <Button --color-accent="transparent" onClick={openGridDrawer} />
@@ -65,6 +51,7 @@
     align-items: center;
     padding: 16px;
   }
+
   .edit {
     margin-left: auto;
   }

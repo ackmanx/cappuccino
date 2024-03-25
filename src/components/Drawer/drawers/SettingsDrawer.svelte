@@ -1,10 +1,10 @@
 <script lang="ts">
   import type { Writable } from 'svelte/store'
 
-  import { getSettings } from '../../context.js'
+  import { getSettings } from '../../../context.js'
+  import type { ChangeEvent, TabType } from '../../../types'
   import CopyIcon from '../../svgs/CopyIcon.svelte'
   import RestoreIcon from '../../svgs/RestoreIcon.svelte'
-  import type { ChangeEvent, TabType } from '../../types'
   import Button from '../inputs/Button/Button.svelte'
   import RadioGroup from '../inputs/RadioGroup/RadioGroup.svelte'
   import ToggleSwitch from '../inputs/ToggleSwitch/ToggleSwitch.svelte'

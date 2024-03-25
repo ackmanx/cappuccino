@@ -33,6 +33,11 @@
   <circle vector-effect="non-scaling-stroke" cx="508.5" cy="334.5" r="11" class="fill-circle" />
 </svg>
 
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
 <style>
   .fill-circle {
     fill: var(--color-text);

@@ -1,16 +1,20 @@
-<!--
-┌─┐┌─┐┬─┐┬┌─┐┌┬┐
-└─┐│  ├┬┘│├─┘ │
-└─┘└─┘┴└─┴┴   ┴
--->
 <script lang="ts">
   import type { ChangeEvent } from '../../../types'
 
-  export let label: string
-  export let value: string | undefined
-  export let onChange: (event: ChangeEvent) => void
-  export let name: string
-  export let type: 'text' | 'number'
+  export let label: string | undefined = ''
+  export let value: string | undefined = ''
+  export let name: string | undefined = ''
+  export let placeholder: string | undefined = ''
+  export let isPlaceholderInput: boolean | undefined
+  export let shouldTakeFocus: boolean | undefined
+  export let onChange: (event: ChangeEvent) => void | undefined = () => {}
+  export let onInput: (event: InputEvent) => void | undefined = () => {}
+
+  function shouldSetFocus(node: HTMLElement) {
+    if (shouldTakeFocus) {
+      node.focus()
+    }
+  }
 </script>
 
 <!--
@@ -18,9 +22,18 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<label
+<label class:isPlaceholderInput
   >{label}
-  <input {name} {type} {value} on:change={onChange} />
+  <input
+    class:isPlaceholderInput
+    {name}
+    {value}
+    {placeholder}
+    type="text"
+    on:change={onChange}
+    on:input={onInput}
+    use:shouldSetFocus
+  />
 </label>
 
 <!--
@@ -38,8 +51,18 @@
   }
 
   label {
-    margin: 1rem 0 2rem;
     flex-grow: 1;
     display: block;
+  }
+
+  label.isPlaceholderInput {
+    display: flex;
+    justify-content: right;
+  }
+
+  input.isPlaceholderInput {
+    width: calc(100% - 60px - 19px);
+    margin-right: 21px;
+    margin-top: 1rem;
   }
 </style>

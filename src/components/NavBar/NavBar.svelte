@@ -1,10 +1,5 @@
-<!--
-┌─┐┌─┐┬─┐┬┌─┐┌┬┐
-└─┐│  ├┬┘│├─┘ │
-└─┘└─┘┴└─┴┴   ┴
--->
 <script lang="ts">
-  import EditIcon from '../../svgs/EditIcon.svelte'
+  import EditIcon from '../../images/EditIcon.svelte'
   import type { TabType } from '../../types'
   import EditButton from '../inputs/EditButton/EditButton.svelte'
 
@@ -31,7 +26,7 @@
   </ul>
 
   <EditButton onClick={onEditTabs}>
-    <EditIcon /> edit tabs
+    <EditIcon />
   </EditButton>
 </nav>
 
@@ -49,7 +44,7 @@
   ul {
     display: flex;
     align-items: center;
-    gap: 2.4rem 0;
+    gap: 2.4rem 0.5rem;
     margin: 0;
     padding-right: 1rem;
   }
@@ -60,9 +55,9 @@
     border: none;
     cursor: pointer;
     font-size: 1.6rem;
-    font-family: inherit;
     padding: 1rem 2rem;
-    border-bottom: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.25s;
   }
 
   button:hover {
@@ -71,5 +66,7 @@
 
   button.active {
     border-bottom: 0.2rem solid var(--color-text);
+    background-color: #ce7432;
+    color: white;
   }
 </style>

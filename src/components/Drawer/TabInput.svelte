@@ -4,13 +4,18 @@
 
   export let element
   export let index: number
+  export let shouldTakeFocus: boolean
   export let onUpdateTab: (name: ChangeEvent, index: number) => void
 </script>
 
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
 <TextField
   value={element.title}
   onChange={(event) => onUpdateTab(event, index)}
   name="title"
-  type="text"
-  label="title"
+  {shouldTakeFocus}
 />

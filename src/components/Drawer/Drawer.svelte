@@ -3,6 +3,8 @@
 
   import { getLayerConfig } from '../../context'
 
+  export let title: String
+
   const layerConfig = getLayerConfig()
 
   const onEsc = (event: KeyboardEvent) => {
@@ -25,26 +27,33 @@
       },
     }
   }
-
-  function init(node: HTMLElement) {
-    node.focus()
-  }
 </script>
 
+<!--
+┌┬┐┌─┐┌┬┐┌─┐┬  ┌─┐┌┬┐┌─┐
+ │ ├┤ │││├─┘│  ├─┤ │ ├┤
+ ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
+-->
 <svelte:window on:keydown={onEsc} />
 
 {#if $layerConfig.activate}
-  <section
+  <component
     inert={!$layerConfig.activate}
     role="dialog"
     transition:customSlide={{ duration: 250 }}
     class="drawer"
   >
-    <div class="button-container"><button use:init on:click={onClickHandler}>&times;</button></div>
-    <div class="dialog-inner">
+    <div class="header">
+      <h1>{title}</h1>
+      <button on:click={onClickHandler}>&times;</button>
+    </div>
+    <div>
       <slot />
     </div>
-  </section>
+  </component>
+
+  <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+  <!-- svelte-ignore a11y-click-events-have-key-events -->
   <div
     role="dialog"
     transition:fade={{ duration: 250 }}
@@ -53,6 +62,11 @@
   />
 {/if}
 
+<!--
+┌─┐┌─┐┌─┐
+│  └─┐└─┐
+└─┘└─┘└─┘
+-->
 <style>
   .drawer {
     position: absolute;
@@ -60,20 +74,27 @@
     right: 0;
     background-color: var(--color-main-background);
     height: 100vh;
-    width: 360px;
+    width: 400px;
     z-index: 4;
     overflow: auto;
   }
 
-  .button-container {
+  .header {
     display: flex;
-    justify-content: end;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 1.5em;
+    font-weight: normal;
   }
 
   .overlay {
     position: absolute;
     inset: 0 0 0 0;
-    background-color: var(--color-text);
+    background-color: var(--color-overlay);
     z-index: 3;
     opacity: 0.6;
   }
@@ -82,13 +103,12 @@
     background: transparent;
     border: 0;
     font-size: 4rem;
-    width: 6rem;
-    padding: 0 1rem;
     color: var(--text);
+    font-weight: lighter;
   }
 
-  section {
-    padding: 1rem;
+  component {
+    padding: 1rem 2rem;
   }
 
   :global(body:has(.overlay)) {

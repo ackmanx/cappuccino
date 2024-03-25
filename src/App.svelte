@@ -1,8 +1,3 @@
-<!--
-┌─┐┌─┐┬─┐┬┌─┐┌┬┐
-└─┐│  ├┬┘│├─┘ │
-└─┘└─┘┴└─┴┴   ┴
--->
 <script lang="ts">
   import { onMount } from 'svelte'
   import { type Writable, writable } from 'svelte/store'
@@ -10,10 +5,10 @@
   import AppHeader from './components/AppHeader/AppHeader.svelte'
   import CardsList from './components/CardsList/CardsList.svelte'
   import Drawer from './components/Drawer/Drawer.svelte'
-  import SettingsDrawer from './components/Drawer/SettingsDrawer.svelte'
-  import UpdateCardDrawer from './components/Drawer/UpdateCardDrawer.svelte'
-  import UpdateGridDrawer from './components/Drawer/UpdateGridDrawer.svelte'
-  import UpdateTabDrawer from './components/Drawer/UpdateTabDrawer.svelte'
+  import ManageTabsDrawer from './components/Drawer/drawers/ManageTabsDrawer.svelte'
+  import SettingsDrawer from './components/Drawer/drawers/SettingsDrawer.svelte'
+  import UpdateCardDrawer from './components/Drawer/drawers/UpdateCardDrawer.svelte'
+  import UpdateGridDrawer from './components/Drawer/drawers/UpdateGridDrawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'
   import NavBar from './components/NavBar/NavBar.svelte'
   import { getLayerConfig, getSettings, setLayerConfig, setSettings } from './context'
@@ -27,14 +22,13 @@
   let tabs: Writable<TabType[]> = writable([])
   let selectedTabIndex = $settings.defaultTab
   let selectedCardIndex = 0
+
   onMount(() => {
     const appContent = localStorage.getItem('appContent') ?? '[]'
 
     if (appContent) {
       $tabs = JSON.parse(appContent)
     }
-
-    /* prettier-ignore */ console.log('^_^', 'mounted', $tabs)
   })
 
   function handleChangeTab(tabIndex: number) {
@@ -51,18 +45,20 @@
       card,
       ...$tabs[selectedTabIndex].cards.slice(selectedCardIndex + 1),
     ]
-    console.log('cardupdate', cardsUpdate)
+
     const tabUpdate = {
       ...$tabs[selectedTabIndex],
       cards: [...cardsUpdate],
     }
+
     const newAppState = [
       ...$tabs.slice(0, selectedTabIndex),
       tabUpdate,
       ...$tabs.slice(selectedTabIndex + 1),
     ]
-    console.log(newAppState)
+
     $tabs = newAppState
+
     localStorage.setItem('appContent', JSON.stringify(newAppState))
   }
 
@@ -84,24 +80,32 @@
     onChangeTab={handleChangeTab}
     onEditTabs={handleEditTabs}
   />
-  <LinksList tabs={$tabs} {selectedTabIndex} />
-  <CardsList cards={$tabs[selectedTabIndex]?.cards} onChangeSelectedCard={handleChangeCard} />
+  {#if $tabs.length}
+    <LinksList tabs={$tabs} {selectedTabIndex} />
+    <CardsList cards={$tabs[selectedTabIndex]?.cards} onChangeSelectedCard={handleChangeCard} />
+  {/if}
 </main>
 
-<Drawer --color-accent={$settings.color}>
-  {#if $layerConfig.subtype === 'grid'}
+{#if $layerConfig.subtype === 'grid'}
+  <Drawer title="Update Tab" --color-accent={$settings.color}>
     <UpdateGridDrawer {tabs} {selectedTabIndex} />
-  {:else if $layerConfig.subtype === 'tab'}
-    <UpdateTabDrawer {tabs} />
-  {:else if $layerConfig.subtype === 'card'}
+  </Drawer>
+{:else if $layerConfig.subtype === 'tab'}
+  <Drawer title="Manage Tabs" --color-accent={$settings.color}>
+    <ManageTabsDrawer {tabs} />
+  </Drawer>
+{:else if $layerConfig.subtype === 'card'}
+  <Drawer title="Update Card" --color-accent={$settings.color}>
     <UpdateCardDrawer
       card={$tabs[selectedTabIndex].cards[selectedCardIndex]}
       onSave={handleSaveCard}
     />
-  {:else if $layerConfig.subtype === 'setting'}
+  </Drawer>
+{:else if $layerConfig.subtype === 'setting'}
+  <Drawer title="Settings" --color-accent={$settings.color}>
     <SettingsDrawer {tabs} />
-  {/if}
-</Drawer>
+  </Drawer>
+{/if}
 
 <!--
 ┌─┐┌─┐┌─┐
