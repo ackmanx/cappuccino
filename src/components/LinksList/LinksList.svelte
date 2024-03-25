@@ -1,8 +1,3 @@
-<!--
-┌─┐┌─┐┬─┐┬┌─┐┌┬┐
-└─┐│  ├┬┘│├─┘ │
-└─┘└─┘┴└─┴┴   ┴
--->
 <script lang="ts">
   import { getLayerConfig } from '../../context'
   import EditIcon from '../../images/EditIcon.svelte'

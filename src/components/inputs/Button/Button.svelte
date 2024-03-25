@@ -1,8 +1,3 @@
-<!--
-┌─┐┌─┐┬─┐┬┌─┐┌┬┐
-└─┐│  ├┬┘│├─┘ │
-└─┘└─┘┴└─┴┴   ┴
--->
 <script lang="ts">
   export let variant: 'primary' | 'secondary' = 'primary'
   export let onClick: (_) => void = () => {}

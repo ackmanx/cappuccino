@@ -1,8 +1,3 @@
-<!--
-┌─┐┌─┐┬─┐┬┌─┐┌┬┐
-└─┐│  ├┬┘│├─┘ │
-└─┘└─┘┴└─┴┴   ┴
--->
 <script lang="ts">
   import { onMount } from 'svelte'
   import { type Writable, writable } from 'svelte/store'
