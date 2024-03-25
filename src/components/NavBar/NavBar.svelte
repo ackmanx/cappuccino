@@ -3,10 +3,14 @@
   import type { TabType } from '../../types'
   import Button from '../inputs/Button/Button.svelte'
 
-  export let tabs: TabType[] = []
-  export let selectedTabIndex: number = 0
-  export let onChangeTab: (tabIndex: number) => void
-  export let onEditTabs: () => void
+  interface Props {
+    tabs: TabType[]
+    selectedTabIndex: number
+    onChangeTab: (tabIndex: number) => void
+    onEditTabs: () => void
+  }
+
+  let { tabs = [], selectedTabIndex = 0, onChangeTab, onEditTabs }: Props = $props()
 </script>
 
 <!--
