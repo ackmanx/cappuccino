@@ -1,7 +1,7 @@
 <script lang="ts">
   import { getContextByDraggableList } from '../../context'
-  import DragIcon from '../../svgs/DragIcon.svelte'
-  import RemoveIcon from '../../svgs/RemoveIcon.svelte'
+  import DragIcon from '../../images/DragIcon.svelte'
+  import RemoveIcon from '../../images/RemoveIcon.svelte'
   import Button from '../inputs/Button/Button.svelte'
 
   type T = $$Generic

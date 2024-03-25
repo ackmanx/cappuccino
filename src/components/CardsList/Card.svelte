@@ -5,7 +5,7 @@
 -->
 <script lang="ts">
   import { getLayerConfig } from '../../context'
-  import EditIcon from '../../svgs/EditIcon.svelte'
+  import EditIcon from '../../images/EditIcon.svelte'
   import type { CardType } from '../../types'
   import Link from '../Link/Link.svelte'
   import Button from '../inputs/Button/Button.svelte'

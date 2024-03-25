@@ -4,7 +4,7 @@
 └─┘└─┘┴└─┴┴   ┴
 -->
 <script lang="ts">
-  import EditIcon from '../../svgs/EditIcon.svelte'
+  import EditIcon from '../../images/EditIcon.svelte'
   import type { TabType } from '../../types'
   import Button from '../inputs/Button/Button.svelte'
 

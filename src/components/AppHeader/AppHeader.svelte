@@ -5,7 +5,7 @@
 -->
 <script lang="ts">
   import { getLayerConfig } from '../../context'
-  import SettingsIcon from '../../svgs/SettingsIcon.svelte'
+  import SettingsIcon from '../../images/SettingsIcon.svelte'
   import Button from '../inputs/Button/Button.svelte'
 
   const layerConfig = getLayerConfig()
