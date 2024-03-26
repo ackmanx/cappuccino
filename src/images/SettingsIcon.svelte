@@ -1,7 +1,5 @@
 <svg
   height="100%"
-  stroke-miterlimit="10"
-  style="fill-rule:nonzero;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;"
   viewBox="0 0 1024 1024"
   width="30"
   xml:space="preserve"
@@ -40,5 +38,10 @@
 <style>
   path {
     fill: var(--color-text);
+    fill-rule: nonzero;
+    clip-rule: evenodd;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-miterlimit: 10;
   }
 </style>

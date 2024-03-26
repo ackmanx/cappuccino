@@ -7,7 +7,7 @@ type LayerConfig = Writable<{
   subtype: 'tab' | 'card' | 'grid' | 'setting'
 }>
 
-type SettingsTypes = Writable<{ editable: boolean; color: string }>
+type SettingsTypes = Writable<{ editable: boolean; color: string; defaultTab: number }>
 
 type DraggableListType = Writable<{
   key: string
@@ -19,7 +19,6 @@ type DraggableListType = Writable<{
 
 export function setLayerConfig() {
   setContext('layerConfig', writable({ activate: false, type: 'drawer', subtype: 'tab' }))
-  setContext('settings', writable({ editable: false, color: '#CE7432' }))
 }
 
 export function getLayerConfig() {
@@ -30,11 +29,20 @@ export function getSettings() {
   return getContext<SettingsTypes>('settings')
 }
 
+export function setSettings() {
+  const settings = localStorage.getItem('settings')
+  if (settings) {
+    setContext('settings', writable(JSON.parse(settings)))
+  } else {
+    setContext('settings', writable({ editable: false, color: '#CE7432', defaultTab: 0 }))
+  }
+}
+
 export function getContextByDraggableList(key: string) {
   return getContext<DraggableListType>(key)
 }
 
-export function setContextByDraggableList(key) {
+export function setContextByDraggableList(key: string) {
   setContext(
     key,
     writable(structuredClone({ key: key, grabbed: -1, draggedOver: -1, isDragEnabled: false }))

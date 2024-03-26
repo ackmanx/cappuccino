@@ -1,9 +1,5 @@
 <script lang="ts">
-  import {
-    getContextByDraggableList,
-    getLayerConfig,
-    setContextByDraggableList,
-  } from '../../context'
+  import { getContextByDraggableList, setContextByDraggableList } from '../../context'
 
   export let key: string
 

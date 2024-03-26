@@ -11,15 +11,17 @@
   import UpdateGridDrawer from './components/Drawer/drawers/UpdateGridDrawer.svelte'
   import LinksList from './components/LinksList/LinksList.svelte'
   import NavBar from './components/NavBar/NavBar.svelte'
-  import { getLayerConfig, setLayerConfig } from './context'
+  import { getLayerConfig, getSettings, setLayerConfig, setSettings } from './context'
   import type { CardType, TabType } from './types'
 
-  let tabs: Writable<TabType[]> = writable([])
-  let selectedTabIndex = 0
-  let selectedCardIndex = 0
-
   setLayerConfig()
+  setSettings()
   let layerConfig = getLayerConfig()
+  let settings = getSettings()
+
+  let tabs: Writable<TabType[]> = writable([])
+  let selectedTabIndex = $settings.defaultTab
+  let selectedCardIndex = 0
 
   onMount(() => {
     const appContent = localStorage.getItem('appContent') ?? '[]'
@@ -70,7 +72,7 @@
  │ ├┤ │││├─┘│  ├─┤ │ ├┤
  ┴ └─┘┴ ┴┴  ┴─┘┴ ┴ ┴ └─┘
 -->
-<main inert={$layerConfig.activate}>
+<main inert={$layerConfig.activate} style={`--color-accent: ${$settings.color}`}>
   <AppHeader />
   <NavBar
     tabs={$tabs}
@@ -85,22 +87,23 @@
 </main>
 
 {#if $layerConfig.subtype === 'grid'}
-  <Drawer title="Update Tab">
+  <Drawer title="Update Tab" --color-accent={$settings.color}>
     <UpdateGridDrawer {tabs} {selectedTabIndex} />
   </Drawer>
 {:else if $layerConfig.subtype === 'tab'}
-  <Drawer title="Manage Tabs">
+  <Drawer title="Manage Tabs" --color-accent={$settings.color}>
     <ManageTabsDrawer {tabs} />
   </Drawer>
 {:else if $layerConfig.subtype === 'card'}
-  <Drawer title="Update Card">
+  <Drawer title="Update Card" --color-accent={$settings.color}>
     <UpdateCardDrawer
       card={$tabs[selectedTabIndex].cards[selectedCardIndex]}
       onSave={handleSaveCard}
     />
-  </Drawer>{:else if $layerConfig.subtype === 'setting'}
-  <Drawer title="Settings">
-    <SettingsDrawer />
+  </Drawer>
+{:else if $layerConfig.subtype === 'setting'}
+  <Drawer title="Settings" --color-accent={$settings.color}>
+    <SettingsDrawer {tabs} />
   </Drawer>
 {/if}
 
