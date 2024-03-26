@@ -2,12 +2,12 @@
   import type { Writable } from 'svelte/store'
 
   import { getSettings } from '../../../context.js'
+  import CopyIcon from '../../../images/CopyIcon.svelte'
+  import RestoreIcon from '../../../images/RestoreIcon.svelte'
   import type { ChangeEvent, TabType } from '../../../types'
-  import CopyIcon from '../../svgs/CopyIcon.svelte'
-  import RestoreIcon from '../../svgs/RestoreIcon.svelte'
-  import Button from '../inputs/Button/Button.svelte'
-  import RadioGroup from '../inputs/RadioGroup/RadioGroup.svelte'
-  import ToggleSwitch from '../inputs/ToggleSwitch/ToggleSwitch.svelte'
+  import Button from '../../inputs/Button/Button.svelte'
+  import RadioGroup from '../../inputs/RadioGroup/RadioGroup.svelte'
+  import ToggleSwitch from '../../inputs/ToggleSwitch/ToggleSwitch.svelte'
 
   let settings = getSettings()
   let jsonData: string
