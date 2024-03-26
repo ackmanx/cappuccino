@@ -1,7 +1,7 @@
 <script lang="ts">
   import EditIcon from '../../images/EditIcon.svelte'
   import type { TabType } from '../../types'
-  import Button from '../inputs/Button/Button.svelte'
+  import EditButton from '../inputs/EditButton/EditButton.svelte'
 
   interface Props {
     tabs: TabType[]
@@ -29,9 +29,9 @@
     {/each}
   </ul>
 
-  <Button --color-accent="transparent" onClick={onEditTabs}>
+  <EditButton onClick={onEditTabs}>
     <EditIcon />
-  </Button>
+  </EditButton>
 </nav>
 
 <!--
@@ -69,6 +69,7 @@
   }
 
   button.active {
+    border-bottom: 0.2rem solid var(--color-text);
     background-color: #ce7432;
     color: white;
   }

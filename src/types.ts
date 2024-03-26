@@ -18,6 +18,11 @@ export interface CardType {
   links: LinkType[]
 }
 
+export interface SettingsType {
+  color: string
+  defaultTab: string
+}
+
 export interface ChangeEvent {
-  currentTarget: HTMLInputElement
+  currentTarget: HTMLInputElement | HTMLTextAreaElement
 }

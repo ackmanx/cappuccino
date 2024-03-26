@@ -4,6 +4,7 @@
   import type { TabType } from '../../types'
   import Link from '../Link/Link.svelte'
   import Button from '../inputs/Button/Button.svelte'
+  import EditButton from '../inputs/EditButton/EditButton.svelte'
 
   const layerConfig = getLayerConfig()
   export let tabs: TabType[] = []
@@ -33,9 +34,8 @@
     </li>
   {/each}
   <li class="edit">
-    <Button --color-accent="transparent" onClick={openGridDrawer}>
-      <EditIcon />
-    </Button>
+    <EditButton onClick={openGridDrawer}><EditIcon /></EditButton>
+    <Button --color-accent="transparent" onClick={openGridDrawer} />
   </li>
 </ul>
 
