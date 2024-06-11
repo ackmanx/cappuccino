@@ -1,3 +1,7 @@
+#
+# Run this script from the package.json script instead of directly
+#
+
 GRAY=$(tput setaf 8)
 YELLOW=$(tput setaf 11)
 BLUE=$(tput setaf 12)

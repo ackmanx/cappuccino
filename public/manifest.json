@@ -1,7 +1,7 @@
 {
   "name": "Cappuccino",
   "version": "1.2",
-  "description": "Formerly 'New Tab Dashboard', rebranded to Cappuccino. This allows for a minimalist new tab list of bookmarks and links. There's no ads or cruft or marketing. It's just you and your links.",
+  "description": "Formerly 'New Tab Dashboard', rebranded to Cappuccino. This allows for a minimalist new tab list of bookmarks and links",
   "chrome_url_overrides": {
     "newtab": "index.html"
   },
